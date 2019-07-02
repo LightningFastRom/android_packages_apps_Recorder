@@ -25,7 +25,7 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
+	<meta-data android:name="android.service.quicksettings.ACTIVE_TILE" android:value="true" />
     <!-- This is needed for aosp build env -->
     <uses-sdk android:minSdkVersion='25'
         tools:ignore="GradleOverrides" />
@@ -66,7 +66,25 @@
 
         <!-- Screen recorder overlay -->
         <service android:name=".screen.OverlayService" />
-
+		
+		<!-- Screen recorder quicksetting tile -->
+		<service
+			android:name=".ScreenRecordingTileService"
+			android:icon="@drawable/ic_action_screen_record"
+			android:label="@string/main_screen_action"
+			android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+			
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+				<action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.PHONE_STATE" />
+                <action android:name="android.provider.MediaStore.RECORD_SOUND" />
+                <action android:name="org.lineageos.recorder.server.display.SCAN" />
+				<action android:name="org.lineageos.recorder.screen.ACTION_START_SCREENCAST" />
+                <action android:name="org.lineageos.recorder.screen.ACTION_STOP_SCREENCAST" />
+            </intent-filter>
+		</service>
+		
         <receiver
             android:name=".screen.ScreencastStartReceiver"
             android:permission="android.permission.CAPTURE_SECURE_VIDEO_OUTPUT">

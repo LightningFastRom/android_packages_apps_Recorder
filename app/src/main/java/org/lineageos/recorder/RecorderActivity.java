@@ -269,8 +269,8 @@ public class RecorderActivity extends AppCompatActivity implements
         }
         refresh();
     }
-
-    private void toggleScreenRecorder() {
+    
+	private void toggleScreenRecorder() {
         if (checkScreenRecPermissions()) {
             return;
         }
@@ -381,8 +381,7 @@ public class RecorderActivity extends AppCompatActivity implements
         requestPermissions(permissionArray, REQUEST_SOUND_REC_PERMS);
         return true;
     }
-
-    private boolean checkScreenRecPermissions() {
+    public boolean checkScreenRecPermissions() {
         if (!hasDrawOverOtherAppsPermission()) {
             Intent overlayIntent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
                     Uri.parse("package:" + getPackageName()));
