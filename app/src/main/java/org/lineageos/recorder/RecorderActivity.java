@@ -74,11 +74,14 @@ public class RecorderActivity extends AppCompatActivity implements
             R.string.dialog_permissions_storage_phone,
             R.string.dialog_permissions_mic_storage_phone
     };
-
+	
     private ServiceConnection mConnection;
     private SoundRecorderService mSoundService;
     private SharedPreferences mPrefs;
-
+	
+	private static boolean hasGrantedAllPermissions;
+	private static final String hasGrantedAllPermissionsKey = "org.lineageos.recorder.hasGrantedAllPermissions";
+	
     private ConstraintLayout mConstraintRoot;
 
     private FloatingActionButton mScreenFab;
@@ -135,6 +138,14 @@ public class RecorderActivity extends AppCompatActivity implements
         bindSoundRecService();
 
         OnBoardingHelper.onBoardScreenSettings(this, mScreenSettings);
+		
+		if (checkSoundRecPermissions()) {
+            return;
+        }
+		
+		if (checkScreenRecPermissions()) {
+            return;
+        }
     }
 
     @Override
@@ -223,15 +234,24 @@ public class RecorderActivity extends AppCompatActivity implements
 
 
     private void toggleAfterPermissionRequest(int requestCode) {
-        switch (requestCode) {
-            case REQUEST_SOUND_REC_PERMS:
-                bindSoundRecService();
-                new Handler().postDelayed(this::toggleSoundRecorder, 500);
-                break;
-            case REQUEST_SCREEN_REC_PERMS:
-                toggleScreenRecorder();
-                break;
-        }
+		//if(mPrefs.getBoolean(hasGrantedAllPermissionsKey, true)){
+			switch (requestCode) {
+				case REQUEST_SOUND_REC_PERMS:
+					break;
+				case REQUEST_SCREEN_REC_PERMS:
+					break;
+			}
+		/*} else {
+			switch (requestCode) {
+				case REQUEST_SOUND_REC_PERMS:
+					bindSoundRecService();
+					new Handler().postDelayed(this::toggleSoundRecorder, 500);
+					break;
+				case REQUEST_SCREEN_REC_PERMS:
+					toggleScreenRecorder();
+					break;
+			}
+		}*/
     }
 
     private void askPermissionsAgain(int requestCode) {
@@ -357,7 +377,6 @@ public class RecorderActivity extends AppCompatActivity implements
     private boolean hasAllScreenRecorderPermissions() {
         return hasStoragePermission();
     }
-
     private boolean checkSoundRecPermissions() {
         ArrayList<String> permissions = new ArrayList<>();
 
@@ -374,14 +393,16 @@ public class RecorderActivity extends AppCompatActivity implements
         }
 
         if (permissions.isEmpty()) {
+			//mPrefs.edit().putBoolean(hasGrantedAllPermissionsKey, false).apply();
             return false;
         }
 
         String[] permissionArray = permissions.toArray(new String[permissions.size()]);
         requestPermissions(permissionArray, REQUEST_SOUND_REC_PERMS);
+		//mPrefs.edit().putBoolean(hasGrantedAllPermissionsKey, true).apply();
         return true;
     }
-    public boolean checkScreenRecPermissions() {
+    private boolean checkScreenRecPermissions() {
         if (!hasDrawOverOtherAppsPermission()) {
             Intent overlayIntent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
                     Uri.parse("package:" + getPackageName()));
@@ -395,14 +416,16 @@ public class RecorderActivity extends AppCompatActivity implements
         }
 
         if (hasStoragePermission()) {
+			//mPrefs.edit().putBoolean(hasGrantedAllPermissionsKey, false).apply();
             return false;
         }
 
         final String[] perms = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
         requestPermissions(perms, REQUEST_SCREEN_REC_PERMS);
+		//mPrefs.edit().putBoolean(hasGrantedAllPermissionsKey, true).apply();
         return true;
     }
-
+	
     private boolean isAudioAllowedWithScreen() {
         return mPrefs.getBoolean(Utils.PREF_SCREEN_WITH_AUDIO, false);
     }

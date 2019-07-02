@@ -50,6 +50,7 @@ public class ScreenRecordingTileService
    extends TileService{
 	private static final String SERVICE_STATUS_FLAG = "serviceStatus";
     private static final String PREFERENCES_KEY = "org.lineageos.recorder";
+	private static final String hasGrantedAllPermissionsKey = "org.lineageos.recorder.hasGrantedAllPermissions";
 	private SharedPreferences mPrefs;
 	
     /**
@@ -58,6 +59,7 @@ public class ScreenRecordingTileService
      */
     @Override
     public void onTileAdded() {
+		// Todo: Fix
 		mPrefs = getSharedPreferences(Utils.PREFS, 0);
         Log.d("QS", "Tile added");
     }
@@ -67,8 +69,27 @@ public class ScreenRecordingTileService
      */
     @Override
     public void onStartListening() {
+		Tile tile = getQsTile();        
+        
+		Icon tileIcon;
+        String tileLabel;
+        boolean isActive = getServiceStatus();
 		mPrefs = getSharedPreferences(Utils.PREFS, 0);
-        Log.d("QS", "Start listening");
+
+		// Todo: Fix Code To Unstable
+		/*if (mPrefs.getBoolean(hasGrantedAllPermissionsKey, true)) {
+			if (isActive) {
+				if (!Utils.isScreenRecording(getApplicationContext())) {
+					tileIcon = Icon.createWithResource(getApplicationContext(), R.drawable.ic_stop_screen);
+					tileLabel = getString(R.string.stop);
+					tile.setIcon(tileIcon);
+        			tile.setLabel(tileLabel);
+					tile.setState(Tile.STATE_INACTIVE);
+					tile.updateTile();
+					Log.d("QS", "Start Listening");
+				}
+			}
+		}*/
     }
 
     /**
@@ -78,51 +99,53 @@ public class ScreenRecordingTileService
     @Override
     public void onClick() {
     	// Called when the user click the tile
-		//final RecorderActivity mRecorderActivity = new RecorderActivity();
-		//if (mRecorderActivity.checkScreenRecPermissions()) {
-			
-        //}
-		
 		Tile tile = getQsTile();        
         
 		Icon tileIcon;
         String tileLabel;
         boolean isActive = getServiceStatus();
 		mPrefs = getSharedPreferences(Utils.PREFS, 0);
-		
-        if (Utils.isScreenRecording(this)) {
-			tileIcon = Icon.createWithResource(this, R.drawable.ic_action_screen_record);
-            tileLabel = getString(R.string.main_screen_action);
-			
-			// Stop Screen Recording
-			Utils.setStatus(this, Utils.UiStatus.NOTHING);
-			startService(new Intent(ScreencastService.ACTION_STOP_SCREENCAST)
-					.setClass(this, ScreencastService.class));
-			
-			// Stop Screen Recording Toast Message
-			Toast.makeText(getApplicationContext(), getString(R.string.toast_stop_screen_recording_message), Toast.LENGTH_SHORT).show();  
-			
-			// Stop Screen Recording Logcat Message
-			Log.d("QS", "Stopping Screen Recording Service");
+
+		// Todo: Fix Code To Unstable
+		/*if (mPrefs.getBoolean(hasGrantedAllPermissionsKey, false)) {				
+				Intent fabIntent = new Intent(getApplicationContext(), RecorderActivity.class);
+				// Stop Screen Recording Toast Message
+				Toast.makeText(this, getString(R.string.toast_requesting_recording_permissions_message), Toast.LENGTH_LONG).show();
+				
+				// Stop Screen Recording Logcat Message
+				Log.d("QS", "Opening Recorder App");
 		} else {
-			tileIcon = Icon.createWithResource(this, R.drawable.ic_stop_screen);
-            tileLabel = getString(R.string.stop);
-			
-			// Start Screen Recording
-			boolean hasAudio = mPrefs.getBoolean(Utils.PREF_SCREEN_WITH_AUDIO, false);
-			Intent fabIntent = new Intent(ScreencastService.ACTION_START_SCREENCAST);
-            fabIntent.putExtra(ScreencastService.EXTRA_WITHAUDIO, hasAudio);
-            startService(fabIntent.setClass(this, ScreencastService.class));
-			
-			// Stop Screen Recording Toast Message
-			Toast.makeText(getApplicationContext(), getString(R.string.toast_start_screen_recording_message), Toast.LENGTH_SHORT).show(); 
-			 
-			// Stop Screen Recording Logcat Message
-			Log.d("QS", "Startting Screen Recording Service");
-        }
-        tile.setIcon(tileIcon);
-        tile.setLabel(tileLabel);
-        tile.updateTile();
+			if (isActive) {
+				tileIcon = Icon.createWithResource(getApplicationContext(), R.drawable.ic_action_screen_record);
+				tileLabel = getString(R.string.main_screen_action);
+				
+				// Stop Screen Recording
+				Utils.setStatus(getApplicationContext(), Utils.UiStatus.NOTHING);
+				startService(new Intent(ScreencastService.ACTION_STOP_SCREENCAST)
+						.setClass(getApplicationContext(), ScreencastService.class));
+				
+				// Stop Screen Recording Toast Message
+				Toast.makeText(getApplicationContext(), getString(R.string.toast_stop_screen_recording_message), Toast.LENGTH_LONG).show();  
+				
+				// Stop Screen Recording Logcat Message
+				Log.d("QS", "Stopping Screen Recording Service");
+			} else {
+				tileIcon = Icon.createWithResource(getApplicationContext(), R.drawable.ic_stop_screen);
+				tileLabel = getString(R.string.stop);
+				
+				// Start Screen Recording
+				boolean hasAudio = mPrefs.getBoolean(Utils.PREF_SCREEN_WITH_AUDIO, false);
+				Intent fabIntent = new Intent(ScreencastService.ACTION_START_SCREENCAST);
+				fabIntent.putExtra(ScreencastService.EXTRA_WITHAUDIO, hasAudio);
+				startService(fabIntent.setClass(getApplicationContext(), ScreencastService.class));
+				
+				// Stop Screen Recording Toast Message
+				Toast.makeText(getApplicationContext(), getString(R.string.toast_start_screen_recording_message), Toast.LENGTH_LONG).show(); 
+				 
+				// Stop Screen Recording Logcat Message
+				Log.d("QS", "Startting Screen Recording Service");
+			}
+   		}*/
     }
 
     /**
@@ -130,7 +153,25 @@ public class ScreenRecordingTileService
      */
     @Override
     public void onStopListening() {
-        Log.d("QS", "Stop Listening");
+		Tile tile = getQsTile();        
+        
+		Icon tileIcon;
+        String tileLabel;
+        boolean isActive = getServiceStatus();
+		mPrefs = getSharedPreferences(Utils.PREFS, 0);
+
+		// Todo: Fix Code To Unstable
+		/*if (!isActive) {
+			if (!Utils.isScreenRecording(getApplicationContext())) {
+				tileIcon = Icon.createWithResource(getApplicationContext(), R.drawable.ic_action_screen_record);
+        		tileLabel = getString(R.string.main_screen_action);
+        		tile.setIcon(tileIcon);
+        		tile.setLabel(tileLabel);
+				tile.setState(Tile.STATE_ACTIVE);
+        		tile.updateTile();
+        		Log.d("QS", "Stop Listening");
+			}
+		}*/
     }
 
     /**
@@ -138,6 +179,8 @@ public class ScreenRecordingTileService
      */
     @Override
     public void onTileRemoved() {
+		// Todo: Fix
+		mPrefs = getSharedPreferences(Utils.PREFS, 0);
         Log.d("QS", "Tile removed");
     }
 	

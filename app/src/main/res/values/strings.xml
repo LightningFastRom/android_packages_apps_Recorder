@@ -110,11 +110,13 @@
     <!-- Sound record title -->
     <string name="main_sound_action">Record sound</string>
 	
-	<!-- Toast stopping screen recording service -->
+	<!-- Toast stopping screen recording servicemessage -->
     <string name="toast_stop_screen_recording_message">Stopping screen @string/sound_recording_title_working service</string>
-	<!-- Toast startting screen recording service -->
+	<!-- Toast startting screen recording service message -->
     <string name="toast_start_screen_recording_message">Startting screen @string/sound_recording_title_working service</string>
-	
+	<!-- Todo: Fix String -->
+	<!-- Toast requesting recording permissions message -->
+    <!-- <string name="toast_requesting_recording_permissions_message">@string/app_name needed @string/dialog_permissions_title to record you screen, opening </string> -->
     <!-- Transition name for dialogActivity -->
     <string name="transition_dialog_name" translatable="false">transition_dialog_activity</string>
 </resources>

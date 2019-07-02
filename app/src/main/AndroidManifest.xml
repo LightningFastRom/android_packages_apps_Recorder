@@ -25,7 +25,6 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-	<meta-data android:name="android.service.quicksettings.ACTIVE_TILE" android:value="true" />
     <!-- This is needed for aosp build env -->
     <uses-sdk android:minSdkVersion='25'
         tools:ignore="GradleOverrides" />
@@ -51,6 +50,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+			<meta-data android:name="android.service.quicksettings.ACTIVE_TILE" android:value="true" />
         </activity>
 
         <activity
@@ -68,7 +68,7 @@
         <service android:name=".screen.OverlayService" />
 		
 		<!-- Screen recorder quicksetting tile -->
-		<service
+		<!-- <service
 			android:name=".ScreenRecordingTileService"
 			android:icon="@drawable/ic_action_screen_record"
 			android:label="@string/main_screen_action"
@@ -83,7 +83,7 @@
 				<action android:name="org.lineageos.recorder.screen.ACTION_START_SCREENCAST" />
                 <action android:name="org.lineageos.recorder.screen.ACTION_STOP_SCREENCAST" />
             </intent-filter>
-		</service>
+		</service> -->
 		
         <receiver
             android:name=".screen.ScreencastStartReceiver"
