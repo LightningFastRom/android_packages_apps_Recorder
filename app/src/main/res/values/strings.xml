@@ -92,6 +92,8 @@
     <!-- Permissions -->
     <!-- Permissions dialog title -->
     <string name="dialog_permissions_title">Permissions</string>
+    <!-- Message: storage access denied -->
+    <string name="dialog_permissions_storage">Recorder needs storage access to save recorded files</string>
     <!-- Message: microphone access denied -->
     <string name="dialog_permissions_mic">Recorder needs microphone permission to record audio</string>
     <!-- Message: phone status denied -->
