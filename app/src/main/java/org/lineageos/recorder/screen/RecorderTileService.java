@@ -98,20 +98,11 @@ public class RecorderTileService extends TileService {
             Toast.makeText(this, R.string.dialog_permissions_overlay, Toast.LENGTH_SHORT).show();
             return true;
         }
-        if (!hasStoragePermission()) {
-            Toast.makeText(this, R.string.dialog_permissions_storage, Toast.LENGTH_SHORT).show();
-            return true;
-        }
         return false;
     }
 
     private boolean hasDrawOverOtherAppsPermission() {
         return Settings.canDrawOverlays(this);
-    }
-
-    private boolean hasStoragePermission() {
-        int result = checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        return result == PackageManager.PERMISSION_GRANTED;
     }
 
 }
