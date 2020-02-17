@@ -89,6 +89,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/screen"
+        android:elevation="100dp"
         android:forceDarkAllowed="false"
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent="0.5"
@@ -99,7 +100,8 @@
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/screen_fab"
             style="@style/AppTheme.RecordFab"
-            android:src="@drawable/ic_action_screen_record" />
+            android:src="@drawable/ic_action_screen_record"
+            android:visibility="gone" />
 
         <TextView
             style="@style/AppTheme.RecordTitle"
@@ -127,4 +129,5 @@
                 android:src="@drawable/ic_settings" />
         </LinearLayout>
     </RelativeLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
