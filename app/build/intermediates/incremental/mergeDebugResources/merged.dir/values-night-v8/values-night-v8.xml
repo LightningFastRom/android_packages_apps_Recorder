@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#333333</color>
+    <color name="colorAccent">#dfdfdf</color>
+    <color name="colorPrimary">#f8f8f8</color>
+    <color name="colorPrimaryDark">#dfdfdf</color>
+    <color name="icon">#dfdfdf</color>
+    <color name="screen">#00418C</color>
+    <color name="sound">#C81400</color>
+    <color name="white">#fafafa</color>
+    <item name="main_recording" type="id"/>
+    <item name="main_screen_layout" type="id"/>
+    <item name="main_sound_layout" type="id"/>
+    <string name="app_name">Recorder</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete">Delete</string>
+    <string name="delete_message">Are you sure you want to delete %1$s? This cannot be undone</string>
+    <string name="delete_title">Deleting record</string>
+    <string name="dialog_permissions_ask">Ask again</string>
+    <string name="dialog_permissions_dismiss">Dismiss</string>
+    <string name="dialog_permissions_mic">Recorder needs microphone permission to record audio</string>
+    <string name="dialog_permissions_mic_phone">Recorder needs microphone permission to record audio and phone status access to prevent this app from recording while you\'re calling</string>
+    <string name="dialog_permissions_overlay">Recorder needs \"Draw over other apps\" permission to record your screen. Press allow, enable the permission in the settings and come back to Recorder</string>
+    <string name="dialog_permissions_phone">Recorder needs phone status access to prevent this app from recording while you\'re calling</string>
+    <string name="dialog_permissions_storage">Recorder needs storage access to save recorded files</string>
+    <string name="dialog_permissions_title">Permissions</string>
+    <string name="main_screen_action">Record screen</string>
+    <string name="main_sound_action">Record sound</string>
+    <string name="play">Play</string>
+    <string name="screen_audio_message_disabled">It\'s not possible to change this setting while recording the screen</string>
+    <string name="screen_audio_message_off">Audio from microphone won\'t be included in the video</string>
+    <string name="screen_audio_message_on">Audio from the microphone will be included in the video</string>
+    <string name="screen_audio_warning_button_ask">Ask</string>
+    <string name="screen_channel_desc">Persistent notification when recording the screen and notification after it is complete</string>
+    <string name="screen_channel_title">Screen recording</string>
+    <string name="screen_insufficient_storage">Insufficient storage</string>
+    <string name="screen_last_message">Duration: %1$d seconds</string>
+    <string name="screen_last_title">Last record</string>
+    <string name="screen_not_enough_storage">Not enough storage available</string>
+    <string name="screen_notification_message">Video length: %s</string>
+    <string name="screen_notification_message_done">Ready to share</string>
+    <string name="screen_notification_title">Screen Recorder</string>
+    <string name="screen_overlay_channel_desc">Notification showing screen recording is ready to start</string>
+    <string name="screen_overlay_channel_title">Ready to record screen</string>
+    <string name="screen_overlay_notif_message">Press the record button when you\'re ready to start</string>
+    <string name="screen_overlay_notif_title">Ready to record</string>
+    <string name="screen_recording_message">Screen is being recorded\u2026</string>
+    <string name="screen_settings_title">Screen recorder settings</string>
+    <string name="share">Share</string>
+    <string name="snack_permissions_no_permission">Required permissions were denied, enable them from Settings app to start recording</string>
+    <string name="sound_channel_desc">Persistent notification when recording sound and notification after it is complete</string>
+    <string name="sound_channel_title">Sound recording</string>
+    <string name="sound_last_title">Last record</string>
+    <string name="sound_notification_message">Audio length: %1$s</string>
+    <string name="sound_notification_title">Sound Recorder</string>
+    <string name="sound_recording_title_working">Recording</string>
+    <string name="stop">Stop</string>
+    <string name="transition_dialog_name" translatable="false">transition_dialog_activity</string>
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowContentTransitions">true</item>
+    </style>
+    <style name="AppTheme.ActionsLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">52dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">end</item>
+    </style>
+    <style name="AppTheme.DialogActivity">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentTransitions">true</item>
+    </style>
+    <style name="AppTheme.ImageButton">
+        <item name="android:layout_width">36dp</item>
+        <item name="android:layout_height">36dp</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:paddingEnd">8dp</item>
+        <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
+    </style>
+    <style name="AppTheme.NoActionBar">
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
+    <style name="AppTheme.RecordFab">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">16dp</item>
+        <item name="android:stateListAnimator">@animator/lift_on_touch</item>
+        <item name="backgroundTint">@color/white</item>
+        <item name="android:layout_centerInParent">true</item>
+    </style>
+    <style name="AppTheme.RecordTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_marginRight">16dp</item>
+        <item name="android:layout_marginBottom">24dp</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:textColor">@color/icon</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:layout_alignParentBottom">true</item>
+    </style>
+    <style name="Theme.AppCompat.DayNight" parent="Theme.AppCompat"/>
+    <style name="Theme.AppCompat.DayNight.DarkActionBar" parent="Theme.AppCompat"/>
+    <style name="Theme.AppCompat.DayNight.Dialog" parent="Theme.AppCompat.Dialog"/>
+    <style name="Theme.AppCompat.DayNight.Dialog.Alert" parent="Theme.AppCompat.Dialog.Alert"/>
+    <style name="Theme.AppCompat.DayNight.Dialog.MinWidth" parent="Theme.AppCompat.Dialog.MinWidth"/>
+    <style name="Theme.AppCompat.DayNight.DialogWhenLarge" parent="Theme.AppCompat.DialogWhenLarge"/>
+    <style name="Theme.AppCompat.DayNight.NoActionBar" parent="Theme.AppCompat.NoActionBar"/>
+    <style name="Theme.MaterialComponents.DayNight" parent="Theme.MaterialComponents"/>
+    <style name="Theme.MaterialComponents.DayNight.BottomSheetDialog" parent="Theme.MaterialComponents.BottomSheetDialog"/>
+    <style name="Theme.MaterialComponents.DayNight.Bridge" parent="Theme.MaterialComponents.Bridge"/>
+    <style name="Theme.MaterialComponents.DayNight.DarkActionBar" parent="Theme.MaterialComponents"/>
+    <style name="Theme.MaterialComponents.DayNight.DarkActionBar.Bridge" parent="Theme.MaterialComponents.Bridge"/>
+    <style name="Theme.MaterialComponents.DayNight.Dialog" parent="Theme.MaterialComponents.Dialog"/>
+    <style name="Theme.MaterialComponents.DayNight.Dialog.Alert" parent="Theme.MaterialComponents.Dialog.Alert"/>
+    <style name="Theme.MaterialComponents.DayNight.Dialog.Alert.Bridge" parent="Theme.MaterialComponents.Dialog.Alert.Bridge"/>
+    <style name="Theme.MaterialComponents.DayNight.Dialog.Bridge" parent="Theme.MaterialComponents.Dialog.Bridge"/>
+    <style name="Theme.MaterialComponents.DayNight.Dialog.FixedSize" parent="Theme.MaterialComponents.Dialog.FixedSize"/>
+    <style name="Theme.MaterialComponents.DayNight.Dialog.FixedSize.Bridge" parent="Theme.MaterialComponents.Dialog.FixedSize.Bridge"/>
+    <style name="Theme.MaterialComponents.DayNight.Dialog.MinWidth" parent="Theme.MaterialComponents.Dialog.MinWidth"/>
+    <style name="Theme.MaterialComponents.DayNight.Dialog.MinWidth.Bridge" parent="Theme.MaterialComponents.Dialog.MinWidth.Bridge"/>
+    <style name="Theme.MaterialComponents.DayNight.DialogWhenLarge" parent="Theme.MaterialComponents.DialogWhenLarge"/>
+    <style name="Theme.MaterialComponents.DayNight.NoActionBar" parent="Theme.MaterialComponents.NoActionBar"/>
+    <style name="Theme.MaterialComponents.DayNight.NoActionBar.Bridge" parent="Theme.MaterialComponents.NoActionBar.Bridge"/>
+    <style name="ThemeOverlay.AppCompat.DayNight" parent="ThemeOverlay.AppCompat.Dark"/>
+    <style name="ThemeOverlay.MaterialComponents.DayNight.BottomSheetDialog" parent="ThemeOverlay.MaterialComponents.BottomSheetDialog"/>
+    <style name="Widget.MaterialComponents.ActionBar.PrimarySurface" parent="Widget.MaterialComponents.ActionBar.Surface"/>
+    <style name="Widget.MaterialComponents.AppBarLayout.PrimarySurface" parent="Widget.MaterialComponents.AppBarLayout.Surface"/>
+    <style name="Widget.MaterialComponents.BottomAppBar.PrimarySurface" parent="Widget.MaterialComponents.BottomAppBar"/>
+    <style name="Widget.MaterialComponents.BottomNavigationView.PrimarySurface" parent="Widget.MaterialComponents.BottomNavigationView"/>
+    <style name="Widget.MaterialComponents.TabLayout.PrimarySurface" parent="Widget.MaterialComponents.TabLayout"/>
+    <style name="Widget.MaterialComponents.Toolbar.PrimarySurface" parent="Widget.MaterialComponents.Toolbar.Surface"/>
+</resources>
