@@ -44,7 +44,7 @@ public class RecordTileReceiver extends BroadcastReceiver {
         if (Utils.isScreenRecording(context)) {
             // Stop
             Utils.setStatus(context, Utils.UiStatus.NOTHING);
-            context.startService(new Intent(ScreencastService.ACTION_STOP_SCREENCAST)
+            context.startForegroundService(new Intent(ScreencastService.ACTION_STOP_SCREENCAST)
                     .setClass(context, ScreencastService.class));
         } else {
             // Start
@@ -52,7 +52,7 @@ public class RecordTileReceiver extends BroadcastReceiver {
                 new Handler().postDelayed(() -> {
                     Intent intent = new Intent(context, OverlayService.class);
                     intent.putExtra(OverlayService.EXTRA_HAS_AUDIO, isAudioAllowedWithScreen(context));
-                    context.startService(intent);
+                    context.startForegroundService(intent);
                 }, 500);
             }
         }
