@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-gd/values-gd.xml",
+            "map": [
+                {
+                    "source": "/Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/res/values-gd/strings.xml",
+                    "from": {
+                        "startLines": "22,21,20,19,18,17",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "1188,1122,994,906,770,707",
+                        "endColumns": "139,65,127,87,135,62",
+                        "endOffsets": "1323,1183,1117,989,901,765"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "55,195,261,389,477,613",
+                        "endColumns": "139,65,127,87,135,62",
+                        "endOffsets": "190,256,384,472,608,671"
+                    }
+                }
+            ]
+        }
+    ]
+}

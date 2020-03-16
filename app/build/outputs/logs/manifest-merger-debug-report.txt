@@ -1,0 +1,276 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:16:1-104:12
+INJECTED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:16:1-104:12
+INJECTED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:16:1-104:12
+INJECTED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:16:1-104:12
+MERGED from [com.google.android.material:material:1.1.0-alpha10] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/da95ffa5303229b21124ff07d5e27b01/material-1.1.0-alpha10/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.0-beta1] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/58ca01a70c5832b4f522c69f97294ef6/constraintlayout-2.0.0-beta1/AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.appcompat:appcompat:1.1.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/37ec02f661e3547c5499ecdfd9f3cd1f/appcompat-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/ccc4f60e4549c263b614feec2a027fa2/cardview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager2:viewpager2:1.0.0-beta03] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/b5fa044729524827998e74ee2c6bf618/viewpager2-1.0.0-beta03/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.fragment:fragment:1.1.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/add2bdb41de46d90e5d3bd4e75929820/fragment-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.appcompat:appcompat-resources:1.1.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/dd07e922b5233b833d82ee834e6becf7/appcompat-resources-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/34085af895daa23049fd0af188e6a001/drawerlayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0-beta01] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/f394ee478b4ec1dcbbf5ae71b3314faa/coordinatorlayout-1.1.0-beta01/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.transition:transition:1.0.1] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/80b2360a587be5f7a2d6fa8510bd68ae/transition-1.0.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/f3997ce16a5c00ae84a772d300d0e1e8/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/331f61861c2d3a925f2252286afb1f53/loader-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.activity:activity:1.0.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/daa47187fb0f0a7c419d1b10e1677cdd/activity-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/beed28e19d4f55ab2c17aff66e0bc400/vectordrawable-animated-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/e0d80e5c178a0db065288a448fc598ef/vectordrawable-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.recyclerview:recyclerview:1.1.0-beta01] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/a3172aa59c57a5da0079730ae808b7b8/recyclerview-1.1.0-beta01/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.customview:customview:1.0.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/740a70a0c89c8c085b6e012b4bd7790e/customview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core:1.1.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/c527b78844be871c44103f6f45a963fb/core-1.1.0/AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/aa91d8d2653c363bbd5da9d9892260d3/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/c9c8616d74aa0ab3eb457d24b669c685/versionedparcelable-1.1.0/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/0554424e228349ffc3db0700d1324aa1/lifecycle-runtime-2.1.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/bad233a64070d55cab9a83b26afbf154/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/7acef2a7bfef3795312317efec15d83e/savedstate-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/d4ef17d609918d2a5f5a86d1ea02678f/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/420f294924962582b4c42c622af43461/lifecycle-livedata-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/66e997bde0b6ece28f7fd36f5f4a1584/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/8787729f29cf7add1bc29c81caccddfd/core-runtime-2.0.0/AndroidManifest.xml:17:1-22:12
+INJECTED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:16:1-104:12
+INJECTED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:16:1-104:12
+INJECTED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:16:1-104:12
+	package
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:18:5-37
+		INJECTED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:16:1-104:12
+		INJECTED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml
+	xmlns:tools
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:17:5-51
+	android:versionCode
+		INJECTED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:16:1-104:12
+		INJECTED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:16:11-69
+uses-permission#android.permission.FOREGROUND_SERVICE
+ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:20:5-77
+	android:name
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:20:22-74
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:21:5-75
+	android:name
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:21:22-72
+uses-permission#android.permission.RECORD_AUDIO
+ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:22:5-71
+	android:name
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:22:22-68
+uses-permission#android.permission.SYSTEM_ALERT_WINDOW
+ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:23:5-78
+	android:name
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:23:22-75
+uses-permission#android.permission.WAKE_LOCK
+ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:24:5-68
+	android:name
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:24:22-65
+uses-sdk
+ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:27:5-48
+INJECTED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:27:5-48
+INJECTED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:27:5-48
+MERGED from [com.google.android.material:material:1.1.0-alpha10] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/da95ffa5303229b21124ff07d5e27b01/material-1.1.0-alpha10/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.1.0-alpha10] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/da95ffa5303229b21124ff07d5e27b01/material-1.1.0-alpha10/AndroidManifest.xml:20:5-44
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.0-beta1] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/58ca01a70c5832b4f522c69f97294ef6/constraintlayout-2.0.0-beta1/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.0-beta1] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/58ca01a70c5832b4f522c69f97294ef6/constraintlayout-2.0.0-beta1/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.appcompat:appcompat:1.1.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/37ec02f661e3547c5499ecdfd9f3cd1f/appcompat-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat:1.1.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/37ec02f661e3547c5499ecdfd9f3cd1f/appcompat-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/ccc4f60e4549c263b614feec2a027fa2/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/ccc4f60e4549c263b614feec2a027fa2/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager2:viewpager2:1.0.0-beta03] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/b5fa044729524827998e74ee2c6bf618/viewpager2-1.0.0-beta03/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager2:viewpager2:1.0.0-beta03] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/b5fa044729524827998e74ee2c6bf618/viewpager2-1.0.0-beta03/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.1.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/add2bdb41de46d90e5d3bd4e75929820/fragment-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.1.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/add2bdb41de46d90e5d3bd4e75929820/fragment-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.1.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/dd07e922b5233b833d82ee834e6becf7/appcompat-resources-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.1.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/dd07e922b5233b833d82ee834e6becf7/appcompat-resources-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/34085af895daa23049fd0af188e6a001/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/34085af895daa23049fd0af188e6a001/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0-beta01] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/f394ee478b4ec1dcbbf5ae71b3314faa/coordinatorlayout-1.1.0-beta01/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0-beta01] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/f394ee478b4ec1dcbbf5ae71b3314faa/coordinatorlayout-1.1.0-beta01/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.transition:transition:1.0.1] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/80b2360a587be5f7a2d6fa8510bd68ae/transition-1.0.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.transition:transition:1.0.1] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/80b2360a587be5f7a2d6fa8510bd68ae/transition-1.0.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/f3997ce16a5c00ae84a772d300d0e1e8/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/f3997ce16a5c00ae84a772d300d0e1e8/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/331f61861c2d3a925f2252286afb1f53/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/331f61861c2d3a925f2252286afb1f53/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.0.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/daa47187fb0f0a7c419d1b10e1677cdd/activity-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.0.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/daa47187fb0f0a7c419d1b10e1677cdd/activity-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/beed28e19d4f55ab2c17aff66e0bc400/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/beed28e19d4f55ab2c17aff66e0bc400/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/e0d80e5c178a0db065288a448fc598ef/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/e0d80e5c178a0db065288a448fc598ef/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.1.0-beta01] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/a3172aa59c57a5da0079730ae808b7b8/recyclerview-1.1.0-beta01/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.1.0-beta01] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/a3172aa59c57a5da0079730ae808b7b8/recyclerview-1.1.0-beta01/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.customview:customview:1.0.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/740a70a0c89c8c085b6e012b4bd7790e/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/740a70a0c89c8c085b6e012b4bd7790e/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.1.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/c527b78844be871c44103f6f45a963fb/core-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.1.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/c527b78844be871c44103f6f45a963fb/core-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/aa91d8d2653c363bbd5da9d9892260d3/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/aa91d8d2653c363bbd5da9d9892260d3/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/c9c8616d74aa0ab3eb457d24b669c685/versionedparcelable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/c9c8616d74aa0ab3eb457d24b669c685/versionedparcelable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/0554424e228349ffc3db0700d1324aa1/lifecycle-runtime-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/0554424e228349ffc3db0700d1324aa1/lifecycle-runtime-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/bad233a64070d55cab9a83b26afbf154/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/bad233a64070d55cab9a83b26afbf154/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/7acef2a7bfef3795312317efec15d83e/savedstate-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/7acef2a7bfef3795312317efec15d83e/savedstate-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/d4ef17d609918d2a5f5a86d1ea02678f/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/d4ef17d609918d2a5f5a86d1ea02678f/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/420f294924962582b4c42c622af43461/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/420f294924962582b4c42c622af43461/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/66e997bde0b6ece28f7fd36f5f4a1584/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/66e997bde0b6ece28f7fd36f5f4a1584/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/8787729f29cf7add1bc29c81caccddfd/core-runtime-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/8787729f29cf7add1bc29c81caccddfd/core-runtime-2.0.0/AndroidManifest.xml:20:5-44
+INJECTED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:27:5-48
+INJECTED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:27:5-48
+	android:targetSdkVersion
+		INJECTED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:27:5-48
+		INJECTED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml
+	tools:ignore
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:27:15-45
+	android:minSdkVersion
+		INJECTED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:27:5-48
+		INJECTED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml
+application
+ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:29:5-103:19
+MERGED from [com.google.android.material:material:1.1.0-alpha10] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/da95ffa5303229b21124ff07d5e27b01/material-1.1.0-alpha10/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.material:material:1.1.0-alpha10] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/da95ffa5303229b21124ff07d5e27b01/material-1.1.0-alpha10/AndroidManifest.xml:22:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.0-beta1] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/58ca01a70c5832b4f522c69f97294ef6/constraintlayout-2.0.0-beta1/AndroidManifest.xml:9:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.0-beta1] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/58ca01a70c5832b4f522c69f97294ef6/constraintlayout-2.0.0-beta1/AndroidManifest.xml:9:5-20
+MERGED from [androidx.core:core:1.1.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/c527b78844be871c44103f6f45a963fb/core-1.1.0/AndroidManifest.xml:24:5-89
+MERGED from [androidx.core:core:1.1.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/c527b78844be871c44103f6f45a963fb/core-1.1.0/AndroidManifest.xml:24:5-89
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/c9c8616d74aa0ab3eb457d24b669c685/versionedparcelable-1.1.0/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/c9c8616d74aa0ab3eb457d24b669c685/versionedparcelable-1.1.0/AndroidManifest.xml:24:5-25:19
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.1.0] /Users/BAProduction/.gradle/caches/transforms-2/files-2.1/c527b78844be871c44103f6f45a963fb/core-1.1.0/AndroidManifest.xml:24:18-86
+	android:supportsRtl
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:33:9-35
+	android:label
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:32:9-41
+	tools:ignore
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:35:9-48
+	android:icon
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:31:9-43
+	android:allowBackup
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:30:9-36
+	android:theme
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:34:9-40
+activity#org.lineageos.recorder.RecorderActivity
+ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:37:9-53:20
+	android:label
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:39:13-45
+	android:launchMode
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:41:13-48
+	android:configChanges
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:42:13-43
+	android:theme
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:40:13-56
+	android:name
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:38:13-45
+intent-filter#action:name:android.intent.action.MAIN+action:name:android.intent.action.PHONE_STATE+action:name:android.provider.MediaStore.RECORD_SOUND+action:name:android.service.quicksettings.action.QS_TILE_PREFERENCES+action:name:org.lineageos.recorder.server.display.SCAN+category:name:android.intent.category.DEFAULT+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:43:13-52:29
+action#android.intent.action.MAIN
+ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:44:17-69
+	android:name
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:44:25-66
+action#android.intent.action.PHONE_STATE
+ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:45:17-76
+	android:name
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:45:25-73
+action#android.provider.MediaStore.RECORD_SOUND
+ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:46:17-83
+	android:name
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:46:25-80
+action#org.lineageos.recorder.server.display.SCAN
+ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:47:17-85
+	android:name
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:47:25-82
+action#android.service.quicksettings.action.QS_TILE_PREFERENCES
+ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:48:17-98
+	android:name
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:48:25-96
+category#android.intent.category.DEFAULT
+ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:50:17-76
+	android:name
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:50:27-73
+category#android.intent.category.LAUNCHER
+ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:51:17-77
+	android:name
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:51:27-74
+activity#org.lineageos.recorder.DialogActivity
+ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:55:9-58:62
+	android:excludeFromRecents
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:57:13-46
+	android:theme
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:58:13-59
+	android:name
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:56:13-43
+service#org.lineageos.recorder.sounds.SoundRecorderService
+ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:61:9-64
+	android:name
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:61:18-61
+service#org.lineageos.recorder.screen.ScreencastService
+ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:64:9-67:63
+	android:enabled
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:66:13-35
+	android:foregroundServiceType
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:67:13-60
+	android:name
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:65:13-53
+service#org.lineageos.recorder.screen.OverlayService
+ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:70:9-71:53
+	android:name
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:71:13-50
+service#org.lineageos.recorder.screen.RecorderTileService
+ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:74:9-83:19
+	android:label
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:77:13-55
+	android:permission
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:78:13-77
+	android:icon
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:76:13-54
+	android:name
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:75:13-77
+intent-filter#action:name:android.service.quicksettings.action.QS_TILE
+ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:79:13-82:29
+action#android.service.quicksettings.action.QS_TILE
+ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:80:17-81:82
+	android:name
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:81:21-80
+receiver#org.lineageos.recorder.screen.ScreencastStartReceiver
+ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:85:9-92:20
+	android:permission
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:87:13-80
+	android:name
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:86:13-59
+intent-filter#action:name:org.lineageos.recorder.screen.ACTION_START_SCREENCAST+action:name:org.lineageos.recorder.screen.ACTION_STOP_SCREENCAST
+ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:88:13-91:29
+action#org.lineageos.recorder.screen.ACTION_START_SCREENCAST
+ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:89:17-96
+	android:name
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:89:25-93
+action#org.lineageos.recorder.screen.ACTION_STOP_SCREENCAST
+ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:90:17-95
+	android:name
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:90:25-92
+receiver#org.lineageos.recorder.screen.RecordTileReceiver
+ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:94:9-63
+	android:name
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:94:19-60
+receiver#org.lineageos.recorder.screen.ScreencastControlReceiver
+ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:96:9-102:20
+	android:permission
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:98:13-80
+	android:name
+		ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:97:13-61
+intent-filter#action:name:org.lineageos.recorder.screen.ACTION_STOP_SCREENCAST
+ADDED from /Users/BAProduction/GitHub/Rom Parts/android_packages_apps_Recorder/app/src/main/AndroidManifest.xml:99:13-101:29
