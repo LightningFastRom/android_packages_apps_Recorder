@@ -97,8 +97,6 @@
     <string name="dialog_permissions_storage">Recorder needs storage access to save recorded files</string>
     <!-- Message: microphone access denied -->
     <string name="dialog_permissions_mic">Recorder needs microphone permission to record audio</string>
-    <!-- Message: storage access denied -->
-    <string name="dialog_permissions_storage">Recorder needs storage access to save recorded files</string>
     <!-- Message: phone status denied -->
     <string name="dialog_permissions_phone">Recorder needs phone status access to prevent this app from recording while you\'re calling</string>
     <!-- Message: microphone and storage access denied -->
