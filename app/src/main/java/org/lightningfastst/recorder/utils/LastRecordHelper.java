@@ -25,15 +25,12 @@ import androidx.appcompat.app.AlertDialog;
 
 import org.lightningfastst.recorder.DialogActivity;
 import org.lightningfastst.recorder.R;
-import org.lightningfastst.recorder.screen.ScreencastService;
 import org.lightningfastst.recorder.sounds.SoundRecorderService;
 
 public class LastRecordHelper {
     private static final String PREFS = "preferences";
     private static final String KEY_LAST_SOUND = "sound_last_path";
-    private static final String KEY_LAST_SCREEN = "screen_last_path";
     private static final String KEY_LAST_SOUND_TIME = "sound_last_duration";
-    private static final String KEY_LAST_SCREEN_TIME = "screen_last_duration";
 
     private LastRecordHelper() {
     }
@@ -51,8 +48,6 @@ public class LastRecordHelper {
 
                     if (isSound) {
                         nm.cancel(SoundRecorderService.NOTIFICATION_ID);
-                    } else {
-                        nm.cancel(ScreencastService.NOTIFICATION_ID);
                     }
                     setLastItem(context, null, 0, isSound);
                 })
@@ -77,9 +72,7 @@ public class LastRecordHelper {
 
     public static Intent getDeleteIntent(Context context, boolean isSound) {
         Intent intent = new Intent(context, DialogActivity.class);
-        intent.putExtra(DialogActivity.EXTRA_TITLE,
-                isSound ? R.string.sound_last_title : R.string.screen_last_title);
-        intent.putExtra(DialogActivity.EXTRA_LAST_SCREEN, !isSound);
+        intent.putExtra(DialogActivity.EXTRA_TITLE, R.string.sound_last_title);
         intent.putExtra(DialogActivity.EXTRA_LAST_SOUND, isSound);
         intent.putExtra(DialogActivity.EXTRA_DELETE_LAST_RECORDING, true);
         return intent;
@@ -89,20 +82,20 @@ public class LastRecordHelper {
                                    boolean isSound) {
         SharedPreferences prefs = context.getSharedPreferences(PREFS, 0);
         prefs.edit()
-                .putString(isSound ? KEY_LAST_SOUND : KEY_LAST_SCREEN, path)
-                .putLong(isSound ? KEY_LAST_SOUND_TIME : KEY_LAST_SCREEN_TIME, duration)
+                .putString(KEY_LAST_SOUND , path)
+                .putLong(KEY_LAST_SOUND_TIME , duration)
                 .apply();
     }
 
     public static Uri getLastItemUri(Context context, boolean isSound) {
         SharedPreferences prefs = context.getSharedPreferences(PREFS, 0);
-        String uriStr = prefs.getString(isSound ? KEY_LAST_SOUND : KEY_LAST_SCREEN, null);
+        String uriStr = prefs.getString(KEY_LAST_SOUND, null);
         return uriStr == null ? null : Uri.parse(uriStr);
     }
 
     private static long getLastItemDuration(Context context, boolean isSound) {
         SharedPreferences prefs = context.getSharedPreferences(PREFS, 0);
-        return prefs.getLong(isSound ? KEY_LAST_SOUND_TIME : KEY_LAST_SCREEN_TIME, -1);
+        return prefs.getLong(KEY_LAST_SOUND_TIME, -1);
     }
 
     public static String getLastItemDescription(Context context, boolean isSound) {
