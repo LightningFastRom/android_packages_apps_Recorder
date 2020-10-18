@@ -15,7 +15,7 @@
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="org.lineageos.recorder">
+    package="org.lightningfastst.recorder">
 
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -44,7 +44,7 @@
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.PHONE_STATE" />
                 <action android:name="android.provider.MediaStore.RECORD_SOUND" />
-                <action android:name="org.lineageos.recorder.server.display.SCAN" />
+                <action android:name="org.lightningfastst.recorder.server.display.SCAN" />
                 <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES"/>
 
                 <category android:name="android.intent.category.DEFAULT" />
@@ -72,7 +72,7 @@
 
         <!-- Screen recorder tile -->
         <service
-            android:name="org.lineageos.recorder.screen.RecorderTileService"
+            android:name="org.lightningfastst.recorder.screen.RecorderTileService"
             android:icon="@drawable/ic_recorder_tile"
             android:label="@string/main_screen_action"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
@@ -86,8 +86,8 @@
             android:name=".screen.ScreencastStartReceiver"
             android:permission="android.permission.CAPTURE_SECURE_VIDEO_OUTPUT">
             <intent-filter>
-                <action android:name="org.lineageos.recorder.screen.ACTION_START_SCREENCAST" />
-                <action android:name="org.lineageos.recorder.screen.ACTION_STOP_SCREENCAST" />
+                <action android:name="org.lightningfastst.recorder.screen.ACTION_START_SCREENCAST" />
+                <action android:name="org.lightningfastst.recorder.screen.ACTION_STOP_SCREENCAST" />
             </intent-filter>
         </receiver>
 
@@ -97,7 +97,7 @@
             android:name=".screen.ScreencastControlReceiver"
             android:permission="android.permission.CAPTURE_SECURE_VIDEO_OUTPUT">
             <intent-filter>
-                <action android:name="org.lineageos.recorder.screen.ACTION_STOP_SCREENCAST" />
+                <action android:name="org.lightningfastst.recorder.screen.ACTION_STOP_SCREENCAST" />
             </intent-filter>
         </receiver>
     </application>
