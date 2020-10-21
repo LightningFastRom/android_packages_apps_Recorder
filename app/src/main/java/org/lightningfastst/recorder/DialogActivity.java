@@ -47,7 +47,6 @@ public class DialogActivity extends AppCompatActivity implements
     public static final String EXTRA_DELETE_LAST_RECORDING = "deleteLastItem";
     private static final int REQUEST_RECORD_AUDIO_PERMS = 213;
     private static final String TYPE_AUDIO = "audio/wav";
-    private static final String TYPE_VIDEO = "video/mp4";
 
     private LinearLayout mRootView;
     private FrameLayout mContent;
@@ -73,7 +72,6 @@ public class DialogActivity extends AppCompatActivity implements
         int dialogTitle = intent.getIntExtra(EXTRA_TITLE, 0);
         boolean isLastScreen = intent.getBooleanExtra(EXTRA_LAST_SCREEN, false);
         boolean isLastSound = intent.getBooleanExtra(EXTRA_LAST_SOUND, false);
-        boolean isSettingsScreen = intent.getBooleanExtra(EXTRA_SETTINGS_SCREEN, false);
 
         getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -86,8 +84,6 @@ public class DialogActivity extends AppCompatActivity implements
             setupAsLastItem(false);
         } else if (isLastSound) {
             setupAsLastItem(true);
-        } else if (isSettingsScreen) {
-            setupAsSettingsScreen();
         }
 
         animateAppearance();
@@ -110,9 +106,6 @@ public class DialogActivity extends AppCompatActivity implements
         if (requestCode != REQUEST_RECORD_AUDIO_PERMS) {
             return;
         }
-
-        mAudioSwitch.setChecked(hasAudioPermission());
-        setScreenWithAudio(hasAudioPermission());
     }
 
     @Override
@@ -122,10 +115,7 @@ public class DialogActivity extends AppCompatActivity implements
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
-        if (key.equals(Utils.PREF_SCREEN_WITH_AUDIO)) {
-            mAudioSwitch.setText(getString(getScreenWithAudio() ?
-                    R.string.screen_audio_message_on : R.string.screen_audio_message_off));
-        }
+
     }
 
     private void animateAppearance() {
@@ -151,7 +141,7 @@ public class DialogActivity extends AppCompatActivity implements
     }
 
     private void playLastItem(boolean isSound) {
-        String type = isSound ? TYPE_AUDIO : TYPE_VIDEO;
+        String type = TYPE_AUDIO;
         Uri uri = LastRecordHelper.getLastItemUri(this, isSound);
         Intent intent = LastRecordHelper.getOpenIntent(uri, type);
         if (intent != null) {
@@ -167,33 +157,9 @@ public class DialogActivity extends AppCompatActivity implements
     }
 
     private void shareLastItem(boolean isSound) {
-        String type = isSound ? TYPE_AUDIO : TYPE_VIDEO;
+        String type = TYPE_AUDIO;
         Uri uri = LastRecordHelper.getLastItemUri(this, isSound);
         startActivity(LastRecordHelper.getShareIntent(uri, type));
-    }
-
-    private void setupAsSettingsScreen() {
-        View view = createContentView(R.layout.dialog_content_screen_settings);
-        mAudioSwitch = view.findViewById(R.id.dialog_content_screen_settings_switch);
-        mAudioSwitch.setOnCheckedChangeListener((button, isChecked) -> {
-            if (hasAudioPermission()) {
-                setScreenWithAudio(isChecked);
-            } else if (isChecked) {
-                askAudioPermission();
-            } else {
-                setScreenWithAudio(false);
-            }
-        });
-
-        boolean isEnabled = getScreenWithAudio();
-        mAudioSwitch.setChecked(isEnabled);
-        mAudioSwitch.setText(getString(isEnabled ?
-                R.string.screen_audio_message_on : R.string.screen_audio_message_off));
-
-        if (Utils.isScreenRecording(this)) {
-            mAudioSwitch.setEnabled(false);
-            mAudioSwitch.setText(getString(R.string.screen_audio_message_disabled));
-        }
     }
 
     private View createContentView(@LayoutRes int layout) {
@@ -211,11 +177,4 @@ public class DialogActivity extends AppCompatActivity implements
                 REQUEST_RECORD_AUDIO_PERMS);
     }
 
-    private void setScreenWithAudio(boolean enabled) {
-        mPrefs.edit().putBoolean(Utils.PREF_SCREEN_WITH_AUDIO, enabled).apply();
-    }
-
-    private boolean getScreenWithAudio() {
-        return mPrefs.getBoolean(Utils.PREF_SCREEN_WITH_AUDIO, false);
-    }
 }
