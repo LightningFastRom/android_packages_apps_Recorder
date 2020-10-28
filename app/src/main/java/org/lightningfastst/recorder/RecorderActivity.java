@@ -28,12 +28,18 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.IBinder;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
+import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -55,7 +61,9 @@ import org.lightningfastst.recorder.ui.SoundVisualizer;
 import org.lightningfastst.recorder.utils.LastRecordHelper;
 import org.lightningfastst.recorder.utils.Utils;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 public class RecorderActivity extends AppCompatActivity implements
         SharedPreferences.OnSharedPreferenceChangeListener {
@@ -78,10 +86,16 @@ public class RecorderActivity extends AppCompatActivity implements
 
     private FloatingActionButton mSoundFab;
     private ImageView mSoundLast;
+    private ListView mRecordings;
 
     private RelativeLayout mRecordingLayout;
     private TextView mRecordingText;
     private SoundVisualizer mRecordingVisualizer;
+
+    private int mCount;
+    private File mFile;
+    private ArrayList myList;
+    private File mList[];
 
     private final BroadcastReceiver mTelephonyReceiver = new BroadcastReceiver() {
         @Override
@@ -105,6 +119,7 @@ public class RecorderActivity extends AppCompatActivity implements
 
         mSoundFab = findViewById(R.id.sound_fab);
         mSoundLast = findViewById(R.id.sound_last_icon);
+        mRecordings = findViewById(R.id.recordings);
 
         mRecordingLayout = findViewById(R.id.main_recording);
         mRecordingText = findViewById(R.id.main_recording_text);
@@ -112,9 +127,6 @@ public class RecorderActivity extends AppCompatActivity implements
 
         mSoundFab.setOnClickListener(v -> toggleSoundRecorder());
         mSoundLast.setOnClickListener(v -> openLastSound());
-
-        mPrefs = getSharedPreferences(Utils.PREFS, 0);
-        mPrefs.registerOnSharedPreferenceChangeListener(this);
 
         bindSoundRecService();
 
@@ -252,11 +264,10 @@ public class RecorderActivity extends AppCompatActivity implements
         ConstraintSet set = new ConstraintSet();
         if (Utils.isRecording(this)) {
 
-            mRecordingText.setText(getString(R.string.sound_recording_title_working));
+            mRecordingText.setVisibility(View.VISIBLE);
             mRecordingLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.sound));
             mRecordingVisualizer.setVisibility(View.VISIBLE);
-                    R.color.screen : R.color.sound));
-
+            mRecordings.setVisibility(View.INVISIBLE);
             mSoundFab.setImageResource(R.drawable.ic_stop_sound);
             mRecordingVisualizer.onAudioLevelUpdated(0);
             if (mSoundService != null) {
@@ -264,15 +275,16 @@ public class RecorderActivity extends AppCompatActivity implements
             }
             set.clone(this, R.layout.constraint_sound);
         } else {
+            mRecordingText.setVisibility(View.INVISIBLE);
             mSoundFab.setImageResource(R.drawable.ic_action_sound_record);
             mSoundFab.setSelected(false);
             mRecordingVisualizer.setVisibility(View.INVISIBLE);
+            mRecordings.setVisibility(View.VISIBLE);
             set.clone(this, R.layout.constraint_default);
         }
 
         updateLastItemStatus();
-//        updateSystemUIColors();
-
+        updateSystemUIColors();
         TransitionManager.beginDelayedTransition(mConstraintRoot);
         set.applyTo(mConstraintRoot);
     }
@@ -341,11 +353,12 @@ public class RecorderActivity extends AppCompatActivity implements
 
     private void updateLastItemStatus() {
         Uri lastSound = LastRecordHelper.getLastItemUri(this, true);
-
-        if (lastSound == null) {
-            mSoundLast.setVisibility(View.GONE);
+        if (mList.length == 0) {
+            mSoundLast.setVisibility(View.INVISIBLE);
+            mRecordings.setVisibility(View.VISIBLE);
         } else {
-            mSoundLast.setVisibility(View.VISIBLE);
+            mSoundLast.setVisibility(View.INVISIBLE);
+            mRecordings.setVisibility(View.INVISIBLE);
         }
     }
 
@@ -353,7 +366,8 @@ public class RecorderActivity extends AppCompatActivity implements
         int navigationBarColor;
 
         if (Utils.isRecording(this)) {
-            navigationBarColor = ContextCompat.getColor(this, R.color.screen);;
+            navigationBarColor = ContextCompat.getColor(this, R.color.screen);
+            ;
         } else {
             navigationBarColor = ContextCompat.getColor(this, R.color.sound);
         }

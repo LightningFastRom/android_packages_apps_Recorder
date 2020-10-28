@@ -15,6 +15,7 @@
 -->
 <resources>
     <item name="main_recording" type="id" />
-    <item name="main_sound_layout" type="id" />
+    <item name="recorder_appbar" type="id" />
     <item name="main_screen_layout" type="id" />
+    <item name="main_sound" type="id" />
 </resources>
