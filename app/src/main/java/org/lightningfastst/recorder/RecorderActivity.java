@@ -36,12 +36,15 @@ import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -60,13 +63,18 @@ import org.lightningfastst.recorder.sounds.SoundRecorderService;
 import org.lightningfastst.recorder.ui.SoundVisualizer;
 import org.lightningfastst.recorder.utils.LastRecordHelper;
 import org.lightningfastst.recorder.utils.Utils;
+import org.lightningfastst.recorder.Recordings;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 public class RecorderActivity extends AppCompatActivity implements
         SharedPreferences.OnSharedPreferenceChangeListener {
+    private static final String TAG = "RecorderActivity";
+
     private static final int REQUEST_SOUND_REC_PERMS = 440;
     private static final int REQUEST_DIALOG_ACTIVITY = 441;
     private static final int REQUEST_AUDIO_VIDEO = 442;
@@ -92,10 +100,9 @@ public class RecorderActivity extends AppCompatActivity implements
     private TextView mRecordingText;
     private SoundVisualizer mRecordingVisualizer;
 
-    private int mCount;
     private File mFile;
-    private ArrayList myList;
     private File mList[];
+
 
     private final BroadcastReceiver mTelephonyReceiver = new BroadcastReceiver() {
         @Override
@@ -118,7 +125,6 @@ public class RecorderActivity extends AppCompatActivity implements
         mConstraintRoot = findViewById(R.id.main_root);
 
         mSoundFab = findViewById(R.id.sound_fab);
-        mSoundLast = findViewById(R.id.sound_last_icon);
         mRecordings = findViewById(R.id.recordings);
 
         mRecordingLayout = findViewById(R.id.main_recording);
@@ -126,10 +132,39 @@ public class RecorderActivity extends AppCompatActivity implements
         mRecordingVisualizer = findViewById(R.id.main_recording_visualizer);
 
         mSoundFab.setOnClickListener(v -> toggleSoundRecorder());
-        mSoundLast.setOnClickListener(v -> openLastSound());
 
         bindSoundRecService();
+        init_Recorging_list();
+    }
 
+    private void init_Recorging_list() {
+
+        mFile = new File(getExternalFilesDir(Environment.DIRECTORY_MUSIC),
+                "SoundRecords");
+        mList = mFile.listFiles();
+        ArrayList<String> recordings = new ArrayList<String>();
+        //Log.d(TAG, "init_Recorging_list: "+mList);
+
+
+        if (mList.length > 0 ) {
+            for (File recording: mList) {
+                recordings.add(recording.getName().toString());
+            }
+        }
+
+//        Log.d(TAG, "init_Recorging_list: "+recordings.toString());
+        Recordings recordingsList = new
+                Recordings(RecorderActivity.this, recordings);
+        mRecordings.setAdapter(recordingsList);
+        mRecordings.setOnItemClickListener(
+        new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                openLastSound(recordings.get(position).toString());
+            }
+        });
+        updateLastItemStatus();
     }
 
     @Override
@@ -285,6 +320,7 @@ public class RecorderActivity extends AppCompatActivity implements
 
         updateLastItemStatus();
         updateSystemUIColors();
+        init_Recorging_list();
         TransitionManager.beginDelayedTransition(mConstraintRoot);
         set.applyTo(mConstraintRoot);
     }
@@ -352,12 +388,9 @@ public class RecorderActivity extends AppCompatActivity implements
     }
 
     private void updateLastItemStatus() {
-        Uri lastSound = LastRecordHelper.getLastItemUri(this, true);
-        if (mList.length == 0) {
-            mSoundLast.setVisibility(View.INVISIBLE);
+        if (mList.length > 0) {
             mRecordings.setVisibility(View.VISIBLE);
         } else {
-            mSoundLast.setVisibility(View.INVISIBLE);
             mRecordings.setVisibility(View.INVISIBLE);
         }
     }
@@ -387,9 +420,9 @@ public class RecorderActivity extends AppCompatActivity implements
                 REQUEST_DIALOG_ACTIVITY, options.toBundle());
     }
 
-    private void openLastSound() {
+    private void openLastSound(String fName) {
         Intent intent = new Intent(this, DialogActivity.class);
-        intent.putExtra(DialogActivity.EXTRA_TITLE, R.string.sound_last_title);
+        intent.putExtra(DialogActivity.EXTRA_TITLE, fName);
         intent.putExtra(DialogActivity.EXTRA_LAST_SOUND, true);
         showDialog(intent, mSoundLast);
     }

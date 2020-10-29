@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/recording"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="fill">
+
+        <TextView
+            android:id="@+id/txt"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center|start|fill"
+            android:gravity="left|center_vertical"
+            android:text="@string/sound_last_title"
+            tools:text="@string/sound_last_title" />
+
+        <LinearLayout
+            android:id="@+id/buttons"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center|fill|end"
+            android:gravity="center|fill|end"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+
+            <ImageButton
+                android:id="@+id/dialog_content_last_play2"
+                style="@style/AppTheme.ImageButton"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:contentDescription="@string/play"
+                android:src="@drawable/ic_play" />
+
+            <ImageButton
+                android:id="@+id/dialog_content_last_delete2"
+                style="@style/AppTheme.ImageButton"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:contentDescription="@string/delete"
+                android:src="@drawable/ic_delete" />
+
+            <ImageButton
+                android:id="@+id/dialog_content_last_share2"
+                style="@style/AppTheme.ImageButton"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:contentDescription="@string/share"
+                android:src="@drawable/ic_share" />
+
+        </LinearLayout>
+    </TableRow>
+</TableLayout>
