@@ -146,9 +146,12 @@ public class RecorderActivity extends AppCompatActivity implements
         //Log.d(TAG, "init_Recorging_list: "+mList);
 
 
-        if (mList.length > 0 ) {
-            for (File recording: mList) {
-                recordings.add(recording.getName().toString());
+        if (mFile.isDirectory()) {
+            if(mFile.list().length == 0) {
+            } else {
+                for (File recording : mList) {
+                    recordings.add(recording.getName().toString());
+                }
             }
         }
 
@@ -193,7 +196,6 @@ public class RecorderActivity extends AppCompatActivity implements
     protected void onResume() {
         super.onResume();
         refresh();
-        clearTransitionNames();
     }
 
     @Override
@@ -388,10 +390,12 @@ public class RecorderActivity extends AppCompatActivity implements
     }
 
     private void updateLastItemStatus() {
-        if (mList.length > 0) {
-            mRecordings.setVisibility(View.VISIBLE);
-        } else {
-            mRecordings.setVisibility(View.INVISIBLE);
+        if (mFile.isDirectory()) {
+            if (mFile.list().length == 0) {
+                mRecordings.setVisibility(View.VISIBLE);
+            } else {
+                mRecordings.setVisibility(View.INVISIBLE);
+            }
         }
     }
 
@@ -405,10 +409,6 @@ public class RecorderActivity extends AppCompatActivity implements
             navigationBarColor = ContextCompat.getColor(this, R.color.sound);
         }
         getWindow().setNavigationBarColor(Utils.darkenedColor(navigationBarColor));
-    }
-
-    private void clearTransitionNames() {
-        mSoundLast.setTransitionName("");
     }
 
     private void showDialog(Intent intent, View view) {
