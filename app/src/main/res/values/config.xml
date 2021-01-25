@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (c) 2017 The LineageOS Project
+<!-- Copyright (c) 2021 The LineageOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -14,18 +14,10 @@
      limitations under the License.
 -->
 <resources>
-    <color name="colorPrimary">#ffffff</color>
-    <color name="colorPrimaryDark">#4f2f54</color>
-    <color name="colorAccent">#4f2f54</color>
-    <color name="colorOverlay">#f8f8f8</color>
-    <color name="colorOverlayMain">#dfdfdf</color>
-    <color name="colorDragLayer">#000000</color>
 
-    <color name="white">#ffffff</color>
-    <color name="black">#000000</color>
-
-    <color name="screen">#00418C</color>
-    <color name="sound">#C81400</color>
-    <color name="wave">#12000000</color>
-    <color name="icon">#000000</color>
+    <!--
+        Max audio value reported by the device. Tune by looking at the values given in
+        the SoundRecorderService.startVisualizerThread method
+     -->
+    <integer name="max_audio_value">50</integer>
 </resources>
