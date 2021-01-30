@@ -20,6 +20,8 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowContentTransitions">true</item>
+		<item name="android:windowBackground">@color/colorPrimary</item>
+		<item name="android:windowDrawsSystemBarBackgrounds">false</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -27,6 +29,15 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:fitsSystemWindows">true</item>
+    </style>
+
+    <style name="LaunchTheme" parent="AppTheme">
+	    <item name="android:windowDrawsSystemBarBackgrounds">false</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">false</item>
+		<item name="android:windowLightStatusBar">false</item>
+		<item name="android:windowLightNavigationBar">false</item>
+		<item name="android:windowBackground">@color/colorPrimary</item>
     </style>
 
     <style name="AppTheme.DialogActivity">
@@ -37,6 +48,9 @@
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowIsFloating">true</item>
         <item name="android:windowContentTransitions">true</item>
+		<item name="android:backgroundDimEnabled">false</item>
+		<item name="android:textColor">@color/icon</item>
+		<item name="android:background">@color/colorPrimary</item>
     </style>
 
     <style name="AppTheme.RecordTitle">

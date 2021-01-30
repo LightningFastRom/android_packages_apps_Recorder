@@ -14,17 +14,17 @@
      limitations under the License.
 -->
 <resources>
-    <color name="colorPrimary">#f8f8f8</color>
-    <color name="colorPrimaryDark">#dfdfdf</color>
-    <color name="colorAccent">#dfdfdf</color>
+    <color name="colorPrimary">#ffffff</color>
+    <color name="colorPrimaryDark">#4f2f54</color>
+    <color name="colorAccent">#4f2f54</color>
     <color name="colorOverlay">#f8f8f8</color>
     <color name="colorOverlayMain">#dfdfdf</color>
     <color name="colorDragLayer">#000000</color>
 
-    <color name="white">#fafafa</color>
-    <color name="black">#333333</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
 
     <color name="screen">#00418C</color>
     <color name="sound">#C81400</color>
-    <color name="icon">#dfdfdf</color>
+    <color name="icon">#000000</color>
 </resources>

@@ -18,6 +18,7 @@
     android:layout_height="wrap_content"
     android:layout_marginEnd="16dp"
     android:layout_marginStart="16dp"
+	android:background="@android:color/transparent"
     android:transitionName="@string/transition_dialog_name">
 
     <LinearLayout
