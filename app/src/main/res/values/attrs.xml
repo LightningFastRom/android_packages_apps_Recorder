@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-     Copyright (c) 2017-2021 The LineageOS Project
+<!-- Copyright (c) 2021 The LineageOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,6 +14,14 @@
      limitations under the License.
 -->
 <resources>
-    <item name="main_recording" type="id" />
-    <item name="main_sound_layout" type="id" />
+
+    <declare-styleable name="WaveFormView">
+        <attr name="numOfWaves" format="integer" />
+        <attr name="density" format="float" />
+        <attr name="wavesColor" format="color" />
+        <attr name="maxAudioValue" format="integer" />
+        <attr name="defaultFrequency" format="float" />
+        <attr name="defaultAmplitude" format="float" />
+        <attr name="defaultPhaseShift" format="float" />
+    </declare-styleable>
 </resources>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (c) 2017 The LineageOS Project
+<!-- Copyright (c) 2017-2021 The LineageOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -17,10 +17,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="org.lineageos.recorder">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <!-- This is needed for aosp build env -->
@@ -37,9 +37,7 @@
         <activity
             android:name=".RecorderActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:launchMode="singleInstance"
-            android:configChanges="uiMode">
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.PHONE_STATE" />
@@ -50,7 +48,17 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
         </activity>
+
+        <activity
+            android:name=".ListActivity"
+            android:label="@string/list_title"
+            android:parentActivityName=".RecorderActivity"
+            android:theme="@style/AppTheme.ListActivity" />
 
         <activity
             android:name=".DialogActivity"
@@ -58,47 +66,15 @@
             android:theme="@style/AppTheme.DialogActivity" />
 
         <!-- Sound recorder -->
-        <service android:name=".sounds.SoundRecorderService" />
-
-        <!-- Screen recorder -->
         <service
-            android:name=".screen.ScreencastService"
-            android:enabled="true"
-            android:foregroundServiceType="mediaProjection" />
-
-        <!-- Screen recorder overlay -->
-        <service
-            android:name=".screen.OverlayService" />
-
-        <!-- Screen recorder tile -->
-        <service
-            android:name="org.lineageos.recorder.screen.RecorderTileService"
-            android:icon="@drawable/ic_recorder_tile"
-            android:label="@string/main_screen_action"
-            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            android:name=".service.SoundRecorderService"
+            android:exported="false">
             <intent-filter>
-                <action
-                    android:name="android.service.quicksettings.action.QS_TILE"/>
+                <action android:name="org.lineageos.recorder.service.START" />
+                <action android:name="org.lineageos.recorder.service.STOP" />
+                <action android:name="org.lineageos.recorder.service.PAUSE" />
+                <action android:name="org.lineageos.recorder.service.RESUME" />
             </intent-filter>
         </service>
-
-        <receiver
-            android:name=".screen.ScreencastStartReceiver"
-            android:permission="android.permission.CAPTURE_SECURE_VIDEO_OUTPUT">
-            <intent-filter>
-                <action android:name="org.lineageos.recorder.screen.ACTION_START_SCREENCAST" />
-                <action android:name="org.lineageos.recorder.screen.ACTION_STOP_SCREENCAST" />
-            </intent-filter>
-        </receiver>
-
-        <receiver android:name=".screen.RecordTileReceiver" />
-
-        <receiver
-            android:name=".screen.ScreencastControlReceiver"
-            android:permission="android.permission.CAPTURE_SECURE_VIDEO_OUTPUT">
-            <intent-filter>
-                <action android:name="org.lineageos.recorder.screen.ACTION_STOP_SCREENCAST" />
-            </intent-filter>
-        </receiver>
     </application>
 </manifest>

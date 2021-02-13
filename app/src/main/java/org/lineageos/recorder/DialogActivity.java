@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 The LineageOS Project
+ * Copyright (C) 2017-2021 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,33 +25,28 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 
 import org.lineageos.recorder.utils.LastRecordHelper;
 import org.lineageos.recorder.utils.Utils;
 
-public class DialogActivity extends AppCompatActivity implements
-        SharedPreferences.OnSharedPreferenceChangeListener {
+public class DialogActivity extends AppCompatActivity {
     public static final String EXTRA_TITLE = "dialogTitle";
-    public static final String EXTRA_LAST_SCREEN = "lastScreenItem";
-    public static final String EXTRA_LAST_SOUND = "lastSoundItem";
     public static final String EXTRA_SETTINGS_SCREEN = "settingsScreen";
     public static final String EXTRA_DELETE_LAST_RECORDING = "deleteLastItem";
-    private static final int REQUEST_RECORD_AUDIO_PERMS = 213;
-    private static final String TYPE_AUDIO = "audio/wav";
-    private static final String TYPE_VIDEO = "video/mp4";
+    private static final int REQUEST_LOCATION_PERMS = 214;
 
     private LinearLayout mRootView;
     private FrameLayout mContent;
-    private Switch mAudioSwitch;
+
+    private SwitchCompat mLocationSwitch;
 
     private SharedPreferences mPrefs;
 
@@ -59,73 +54,80 @@ public class DialogActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);
 
-        setContentView(R.layout.dialog_base);
         setFinishOnTouchOutside(true);
 
+        mPrefs = getSharedPreferences(Utils.PREFS, 0);
+
+        Intent intent = getIntent();
+        boolean deleteLastRecording = intent.getBooleanExtra(EXTRA_DELETE_LAST_RECORDING, false);
+
+        if (deleteLastRecording) {
+            deleteLastItem();
+            return;
+        }
+
+        setContentView(R.layout.dialog_base);
         mRootView = findViewById(R.id.dialog_root);
         TextView title = findViewById(R.id.dialog_title);
         mContent = findViewById(R.id.dialog_content);
 
-        mPrefs = getSharedPreferences(Utils.PREFS, 0);
-        mPrefs.registerOnSharedPreferenceChangeListener(this);
-
-        Intent intent = getIntent();
-        int dialogTitle = intent.getIntExtra(EXTRA_TITLE, 0);
-        boolean isLastScreen = intent.getBooleanExtra(EXTRA_LAST_SCREEN, false);
-        boolean isLastSound = intent.getBooleanExtra(EXTRA_LAST_SOUND, false);
-        boolean isSettingsScreen = intent.getBooleanExtra(EXTRA_SETTINGS_SCREEN, false);
-
         getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
+
+        int dialogTitle = intent.getIntExtra(EXTRA_TITLE, 0);
+        boolean isSettingsScreen = intent.getBooleanExtra(EXTRA_SETTINGS_SCREEN, false);
 
         if (dialogTitle != 0) {
             title.setText(dialogTitle);
         }
 
-        if (isLastScreen) {
-            setupAsLastItem(false);
-        } else if (isLastSound) {
-            setupAsLastItem(true);
-        } else if (isSettingsScreen) {
+        if (isSettingsScreen) {
             setupAsSettingsScreen();
         }
 
         animateAppearance();
-
-        boolean deleteLastRecording = intent.getBooleanExtra(EXTRA_DELETE_LAST_RECORDING, false);
-        if (deleteLastRecording) {
-            deleteLastItem(isLastSound);
-        }
     }
 
     @Override
     public void onDestroy() {
-        mPrefs.unregisterOnSharedPreferenceChangeListener(this);
         super.onDestroy();
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
                                            @NonNull int[] results) {
-        if (requestCode != REQUEST_RECORD_AUDIO_PERMS) {
+        super.onRequestPermissionsResult(requestCode, permissions, results);
+        if (hasLocationPermission()) {
+            toggleAfterPermissionRequest(requestCode);
             return;
         }
 
-        mAudioSwitch.setChecked(hasAudioPermission());
-        setScreenWithAudio(hasAudioPermission());
+        if (shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION)) {
+            new AlertDialog.Builder(this)
+                    .setTitle(R.string.dialog_permissions_title)
+                    .setMessage(getString(R.string.dialog_permissions_location))
+                    .setPositiveButton(R.string.dialog_permissions_ask,
+                            (dialog, position) -> {
+                                dialog.dismiss();
+                                askLocationPermission();
+                            })
+                    .setNegativeButton(R.string.dialog_permissions_dismiss,
+                            (dialog, position) -> mLocationSwitch.setChecked(false))
+                    .show();
+        } else {
+            // User has denied all the required permissions "forever"
+            new AlertDialog.Builder(this)
+                    .setTitle(R.string.dialog_permissions_title)
+                    .setMessage(R.string.snack_permissions_no_permission_location)
+                    .setPositiveButton(R.string.dialog_permissions_dismiss, null)
+                    .show();
+            mLocationSwitch.setChecked(false);
+        }
     }
 
     @Override
     public void onBackPressed() {
         finish();
-    }
-
-    @Override
-    public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
-        if (key.equals(Utils.PREF_SCREEN_WITH_AUDIO)) {
-            mAudioSwitch.setText(getString(getScreenWithAudio() ?
-                    R.string.screen_audio_message_on : R.string.screen_audio_message_off));
-        }
     }
 
     private void animateAppearance() {
@@ -136,63 +138,44 @@ public class DialogActivity extends AppCompatActivity implements
                 .start();
     }
 
-    private void setupAsLastItem(boolean isSound) {
-        View view = createContentView(R.layout.dialog_content_last_item);
-        TextView description = view.findViewById(R.id.dialog_content_last_description);
-        ImageView play = view.findViewById(R.id.dialog_content_last_play);
-        ImageView delete = view.findViewById(R.id.dialog_content_last_delete);
-        ImageView share = view.findViewById(R.id.dialog_content_last_share);
-
-        description.setText(LastRecordHelper.getLastItemDescription(this, isSound));
-
-        play.setOnClickListener(v -> playLastItem(isSound));
-        delete.setOnClickListener(v -> deleteLastItem(isSound));
-        share.setOnClickListener(v -> shareLastItem(isSound));
-    }
-
-    private void playLastItem(boolean isSound) {
-        String type = isSound ? TYPE_AUDIO : TYPE_VIDEO;
-        Uri uri = LastRecordHelper.getLastItemUri(this, isSound);
-        Intent intent = LastRecordHelper.getOpenIntent(uri, type);
-        if (intent != null) {
-            startActivityForResult(intent, 0);
-        }
-    }
-
-    private void deleteLastItem(boolean isSound) {
-        Uri uri = LastRecordHelper.getLastItemUri(this, isSound);
-        AlertDialog dialog = LastRecordHelper.deleteFile(this, uri, isSound);
+    private void deleteLastItem() {
+        Uri uri = LastRecordHelper.getLastItemUri(this);
+        AlertDialog dialog = LastRecordHelper.deleteFile(this, uri);
         dialog.setOnDismissListener(d -> finish());
         dialog.show();
     }
 
-    private void shareLastItem(boolean isSound) {
-        String type = isSound ? TYPE_AUDIO : TYPE_VIDEO;
-        Uri uri = LastRecordHelper.getLastItemUri(this, isSound);
-        startActivity(LastRecordHelper.getShareIntent(uri, type));
-    }
-
     private void setupAsSettingsScreen() {
-        View view = createContentView(R.layout.dialog_content_screen_settings);
-        mAudioSwitch = view.findViewById(R.id.dialog_content_screen_settings_switch);
-        mAudioSwitch.setOnCheckedChangeListener((button, isChecked) -> {
-            if (hasAudioPermission()) {
-                setScreenWithAudio(isChecked);
-            } else if (isChecked) {
-                askAudioPermission();
+        final View view = createContentView(R.layout.dialog_content_settings);
+        mLocationSwitch = view.findViewById(R.id.dialog_content_settings_location_switch);
+        boolean hasLocationPerm = hasLocationPermission();
+        boolean tagWithLocation = getTagWithLocation();
+        if (tagWithLocation && !hasLocationPerm) {
+            setTagWithLocation(false);
+            tagWithLocation = false;
+        }
+        mLocationSwitch.setChecked(tagWithLocation);
+        mLocationSwitch.setOnCheckedChangeListener((button, isChecked) -> {
+            if (isChecked) {
+                if (hasLocationPermission()) {
+                    setTagWithLocation(true);
+                } else {
+                    askLocationPermission();
+                }
             } else {
-                setScreenWithAudio(false);
+                setTagWithLocation(false);
             }
         });
 
-        boolean isEnabled = getScreenWithAudio();
-        mAudioSwitch.setChecked(isEnabled);
-        mAudioSwitch.setText(getString(isEnabled ?
-                R.string.screen_audio_message_on : R.string.screen_audio_message_off));
-
-        if (Utils.isScreenRecording(this)) {
-            mAudioSwitch.setEnabled(false);
-            mAudioSwitch.setText(getString(R.string.screen_audio_message_disabled));
+        SwitchCompat highQualitySwitch =
+                view.findViewById(R.id.dialog_content_settings_high_quality_switch);
+        boolean highQuality = Utils.getRecordInHighQuality(this);
+        highQualitySwitch.setChecked(highQuality);
+        highQualitySwitch.setOnCheckedChangeListener(((buttonView, isChecked) ->
+                Utils.setRecordingHighQuality(this, isChecked)));
+        if (Utils.isRecording(this)) {
+            mLocationSwitch.setEnabled(false);
+            highQualitySwitch.setEnabled(false);
         }
     }
 
@@ -201,21 +184,28 @@ public class DialogActivity extends AppCompatActivity implements
         return inflater.inflate(layout, mContent);
     }
 
-    private boolean hasAudioPermission() {
-        int result = checkSelfPermission(Manifest.permission.RECORD_AUDIO);
+    private boolean hasLocationPermission() {
+        int result = checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION);
         return result == PackageManager.PERMISSION_GRANTED;
     }
 
-    private void askAudioPermission() {
-        requestPermissions(new String[]{ Manifest.permission.RECORD_AUDIO },
-                REQUEST_RECORD_AUDIO_PERMS);
+    private void askLocationPermission() {
+        requestPermissions(new String[]{ Manifest.permission.ACCESS_FINE_LOCATION },
+                REQUEST_LOCATION_PERMS);
     }
 
-    private void setScreenWithAudio(boolean enabled) {
-        mPrefs.edit().putBoolean(Utils.PREF_SCREEN_WITH_AUDIO, enabled).apply();
+    private void setTagWithLocation(boolean enabled) {
+        mPrefs.edit().putBoolean(Utils.PREF_TAG_WITH_LOCATION, enabled).apply();
     }
 
-    private boolean getScreenWithAudio() {
-        return mPrefs.getBoolean(Utils.PREF_SCREEN_WITH_AUDIO, false);
+    private boolean getTagWithLocation() {
+        return mPrefs.getBoolean(Utils.PREF_TAG_WITH_LOCATION, false);
+    }
+
+    private void toggleAfterPermissionRequest(int requestCode) {
+        if (requestCode == REQUEST_LOCATION_PERMS) {
+            mLocationSwitch.setChecked(true);
+            setTagWithLocation(true);
+        }
     }
 }

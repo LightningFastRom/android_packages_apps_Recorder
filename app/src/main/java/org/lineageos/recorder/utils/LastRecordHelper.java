@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 The LineageOS Project
+ * Copyright (C) 2017-2021 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,49 +20,96 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.text.Editable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.EditText;
 
 import androidx.appcompat.app.AlertDialog;
 
 import org.lineageos.recorder.DialogActivity;
 import org.lineageos.recorder.R;
-import org.lineageos.recorder.screen.ScreencastService;
-import org.lineageos.recorder.sounds.SoundRecorderService;
+import org.lineageos.recorder.service.SoundRecorderService;
+
+import java.util.function.Consumer;
 
 public class LastRecordHelper {
     private static final String PREFS = "preferences";
     private static final String KEY_LAST_SOUND = "sound_last_path";
-    private static final String KEY_LAST_SCREEN = "screen_last_path";
-    private static final String KEY_LAST_SOUND_TIME = "sound_last_duration";
-    private static final String KEY_LAST_SCREEN_TIME = "screen_last_duration";
 
     private LastRecordHelper() {
     }
 
-    public static AlertDialog deleteFile(Context context, final Uri uri, boolean isSound) {
+    public static AlertDialog deleteFile(Context context, final Uri uri) {
         return new AlertDialog.Builder(context)
                 .setTitle(R.string.delete_title)
-                .setMessage(context.getString(R.string.delete_message, uri))
+                .setMessage(context.getString(R.string.delete_recording_message))
                 .setPositiveButton(R.string.delete, (dialog, which) -> {
                     MediaProviderHelper.remove(context.getContentResolver(), uri);
                     NotificationManager nm = context.getSystemService(NotificationManager.class);
                     if (nm == null) {
                         return;
                     }
-
-                    if (isSound) {
-                        nm.cancel(SoundRecorderService.NOTIFICATION_ID);
-                    } else {
-                        nm.cancel(ScreencastService.NOTIFICATION_ID);
-                    }
-                    setLastItem(context, null, 0, isSound);
+                    nm.cancel(SoundRecorderService.NOTIFICATION_ID);
+                    setLastItem(context, null);
                 })
                 .setNegativeButton(R.string.cancel, null)
                 .create();
     }
 
+    public static AlertDialog promptFileDeletion(Context context,
+                                                 final Uri uri,
+                                                 Runnable onDelete) {
+        return new AlertDialog.Builder(context)
+                .setTitle(R.string.delete_title)
+                .setMessage(context.getString(R.string.delete_recording_message))
+                .setPositiveButton(R.string.delete, (dialog, which) -> {
+                    NotificationManager nm = context.getSystemService(NotificationManager.class);
+                    if (nm == null) {
+                        return;
+                    }
+
+                    nm.cancel(SoundRecorderService.NOTIFICATION_ID);
+                    MediaProviderHelper.remove(context.getContentResolver(), uri);
+                    onDelete.run();
+                })
+                .setNegativeButton(R.string.cancel, null)
+                .create();
+    }
+
+    public static AlertDialog promptRename(Context context,
+                                           String currentTitle,
+                                           Consumer<String> consumer) {
+        LayoutInflater inflater = context.getSystemService(LayoutInflater.class);
+        View view = inflater.inflate( R.layout.dialog_content_rename, null);
+        EditText editText = view.findViewById(R.id.name);
+        editText.setText(currentTitle);
+        editText.requestFocus();
+        Utils.showKeyboard(context);
+
+        return new AlertDialog.Builder(context)
+                .setTitle(R.string.list_edit_title)
+                .setView(view)
+                .setPositiveButton(R.string.list_edit_confirm, (dialog, which) -> {
+                    Editable editable = editText.getText();
+                    if (editable == null || editable.length() == 0) {
+                        return;
+                    }
+
+                    String newTitle = editable.toString();
+                    if (!newTitle.equals(currentTitle)) {
+                        consumer.accept(newTitle);
+                    }
+                    Utils.closeKeyboard(context);
+                })
+                .setNegativeButton(R.string.cancel, (dialog, which) -> Utils.closeKeyboard(context))
+                .create();
+    }
+
     public static Intent getShareIntent(Uri uri, String mimeType) {
         Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.setDataAndType(uri, mimeType);
+        intent.setType(mimeType);
+        intent.putExtra(Intent.EXTRA_STREAM, uri);
         Intent chooserIntent = Intent.createChooser(intent, null);
         chooserIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         return chooserIntent;
@@ -75,38 +122,23 @@ public class LastRecordHelper {
         return intent;
     }
 
-    public static Intent getDeleteIntent(Context context, boolean isSound) {
+    public static Intent getDeleteIntent(Context context) {
         Intent intent = new Intent(context, DialogActivity.class);
-        intent.putExtra(DialogActivity.EXTRA_TITLE,
-                isSound ? R.string.sound_last_title : R.string.screen_last_title);
-        intent.putExtra(DialogActivity.EXTRA_LAST_SCREEN, !isSound);
-        intent.putExtra(DialogActivity.EXTRA_LAST_SOUND, isSound);
+        intent.putExtra(DialogActivity.EXTRA_TITLE, R.string.sound_last_title);
         intent.putExtra(DialogActivity.EXTRA_DELETE_LAST_RECORDING, true);
         return intent;
     }
 
-    public static void setLastItem(Context context, String path, long duration,
-                                   boolean isSound) {
+    public static void setLastItem(Context context, String path) {
         SharedPreferences prefs = context.getSharedPreferences(PREFS, 0);
         prefs.edit()
-                .putString(isSound ? KEY_LAST_SOUND : KEY_LAST_SCREEN, path)
-                .putLong(isSound ? KEY_LAST_SOUND_TIME : KEY_LAST_SCREEN_TIME, duration)
+                .putString(KEY_LAST_SOUND, path)
                 .apply();
     }
 
-    public static Uri getLastItemUri(Context context, boolean isSound) {
+    public static Uri getLastItemUri(Context context) {
         SharedPreferences prefs = context.getSharedPreferences(PREFS, 0);
-        String uriStr = prefs.getString(isSound ? KEY_LAST_SOUND : KEY_LAST_SCREEN, null);
+        String uriStr = prefs.getString(KEY_LAST_SOUND, null);
         return uriStr == null ? null : Uri.parse(uriStr);
-    }
-
-    private static long getLastItemDuration(Context context, boolean isSound) {
-        SharedPreferences prefs = context.getSharedPreferences(PREFS, 0);
-        return prefs.getLong(isSound ? KEY_LAST_SOUND_TIME : KEY_LAST_SCREEN_TIME, -1);
-    }
-
-    public static String getLastItemDescription(Context context, boolean isSound) {
-        return context.getString(R.string.screen_last_message,
-                getLastItemDuration(context, isSound) / 1000);
     }
 }

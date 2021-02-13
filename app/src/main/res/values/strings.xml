@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (c) 2017 The LineageOS Project
+<!-- Copyright (c) 2017-2021 The LineageOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -23,14 +23,20 @@
     <string name="stop">Stop</string>
     <!-- Play action -->
     <string name="play">Play</string>
+    <!-- Pause action -->
+    <string name="pause">Pause</string>
+    <!-- Resume action -->
+    <string name="resume">Resume</string>
     <!-- Delete action -->
     <string name="delete">Delete</string>
     <!-- Cancel action -->
     <string name="cancel">Cancel</string>
+    <!-- Rename action -->
+    <string name="rename">Rename</string>
     <!-- Delete confirm title -->
     <string name="delete_title">Deleting record</string>
     <!-- Delete confirm message -->
-    <string name="delete_message">Are you sure you want to delete %1$s? This cannot be undone</string>
+    <string name="delete_recording_message">Are you sure you want to delete this recording? This cannot be undone</string>
     <!-- Date for last item %1 is year, %2 month, %3 day, %4 hour, %5 min -->
 
     <!-- Permissions -->
@@ -49,45 +55,16 @@
     <!-- Sound recorder notification channel description-->
     <string name="sound_channel_desc">Persistent notification when recording sound and notification after it is complete</string>
 
-    <!-- Screen recorder -->
-    <!-- Screen recorder enabled audio message -->
-    <string name="screen_audio_message_on">Audio from the microphone will be included in the video</string>
-    <!-- Screen recorder disabled audio message -->
-    <string name="screen_audio_message_off">Audio from microphone won\'t be included in the video</string>
-    <!-- Screen recorder disabled audio toggle message -->
-    <string name="screen_audio_message_disabled">It\'s not possible to change this setting while recording the screen</string>
-    <!-- Screen recorder audio permission request card button -->
-    <string name="screen_audio_warning_button_ask">Ask</string>
-    <!-- Screen recorder notification storage error title -->
-    <string name="screen_insufficient_storage">Insufficient storage</string>
-    <!-- Screen recorder notification storage error message -->
-    <string name="screen_not_enough_storage">Not enough storage available</string>
-    <!-- Screen recorder notification title -->
-    <string name="screen_notification_title">Screen Recorder</string>
-    <!-- Screen recorder notification message -->
-    <string name="screen_notification_message">Video length: %s</string>
-    <!-- Screen recorder notification share title -->
-    <string name="screen_notification_message_done">Ready to share</string>
-    <!-- Screen recorder status message -->
-    <string name="screen_recording_message">Screen is being recorded\u2026</string>
-    <!-- Screen recorder last item title -->
-    <string name="screen_last_title">Last record</string>
     <!-- Screen recorder last item message -->
     <string name="screen_last_message">Duration: %1$d seconds</string>
-    <!-- Screen recorder notification overlay title -->
-    <string name="screen_overlay_notif_title">Ready to record</string>
-    <!-- Screen recorder notification overlay message -->
-    <string name="screen_overlay_notif_message">Press the record button when you\'re ready to start</string>
-    <!-- Screen settings dialog title -->
-    <string name="screen_settings_title">Screen recorder settings</string>
-    <!-- Screen recorder notification overlay channel title -->
-    <string name="screen_overlay_channel_title">Ready to record screen</string>
-    <!-- Screen recorder notification overlay channel description-->
-    <string name="screen_overlay_channel_desc">Notification showing screen recording is ready to start</string>
-    <!-- Screen recorder persistent notification channel title -->
-    <string name="screen_channel_title">Screen recording</string>
-    <!-- Screen recorder persistent notification channel description-->
-    <string name="screen_channel_desc">Persistent notification when recording the screen and notification after it is complete</string>
+
+    <!-- Settings -->
+    <!-- Settings: dialog title -->
+    <string name="settings_title">Settings</string>
+    <!-- Settings: tag recordings with current location -->
+    <string name="settings_location_message">Tag your recordings with your current position</string>
+    <!-- Settings: recording in high quality -->
+    <string name="settings_quality_high">Record in high quality</string>
 
     <!-- Permissions -->
     <!-- Permissions dialog title -->
@@ -100,20 +77,31 @@
     <string name="dialog_permissions_phone">Recorder needs phone status access to prevent this app from recording while you\'re calling</string>
     <!-- Message: microphone and phone status access denied -->
     <string name="dialog_permissions_mic_phone">Recorder needs microphone permission to record audio and phone status access to prevent this app from recording while you\'re calling</string>
+    <!-- Message: location permission denied -->
+    <string name="dialog_permissions_location">Recorder needs location permission to automatically tag your recordings to help you organize them</string>
     <!-- Permissions dialog action: ask permissions access again -->
     <string name="dialog_permissions_ask">Ask again</string>
     <!-- Permissions dialog action: dismiss dialog -->
     <string name="dialog_permissions_dismiss">Dismiss</string>
-    <!-- Message: overlay permission denied. Make sure "Draw over other apps" matches settings strings -->
-    <string name="dialog_permissions_overlay">Recorder needs \"Draw over other apps\" permission to record your screen. Press allow, enable the permission in the settings and come back to Recorder</string>
     <!-- No permissions granted error -->
     <string name="snack_permissions_no_permission">Required permissions were denied, enable them from Settings app to start recording</string>
+    <!-- User denied location access -->
+    <string name="snack_permissions_no_permission_location">Location permission was denied, enable it from Settings app to tag your recordings</string>
 
     <!-- Main activity -->
-    <!-- Screen record title -->
-    <string name="main_screen_action">Record screen</string>
     <!-- Sound record title -->
     <string name="main_sound_action">Record sound</string>
+
+    <!-- List activity -->
+    <!-- List activity title -->
+    <string name="list_title">My recordings</string>
+    <string name="list_error_empty">All your recordings will be shown here</string>
+    <!-- Edit recording title -->
+    <string name="list_edit_title">Edit recording name</string>
+    <!-- Edit recording confirm action -->
+    <string name="list_edit_confirm">Change</string>
+    <!-- List item menu actions description for a11y -->
+    <string name="list_item_menu">More actions</string>
 
     <!-- Transition name for dialogActivity -->
     <string name="transition_dialog_name" translatable="false">transition_dialog_activity</string>

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 The LineageOS Project
+ * Copyright (C) 2017-2021 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,36 +26,38 @@ import android.view.animation.AnimationUtils;
 import org.lineageos.recorder.R;
 
 public class OnBoardingHelper {
-    private static final String ONBOARD_SCREEN_SETTINGS = "onboard_screen_settings";
-    private static final String ONBOARD_SCREEN_LAST = "onboard_screen_last";
-    private static final String ONBOARD_SOUND_LAST = "onboard_sound_last";
+    private static final String ONBOARD_SETTINGS = "onboard_settings";
+    private static final String ONBOARD_SOUND_LIST = "onboard_list";
     private static final long RIPPLE_DELAY = 500;
     private static final long RIPPLE_REPEAT = 4;
+    private static final int RIPPLE_OPEN_APP_WAIT = 1;
     private static final long ROTATION_DELAY = 500;
-    private static final int ROTATION_OPEN_APP_WAIT = 2;
+    private static final int ROTATION_OPEN_APP_WAIT = 3;
 
-    public static void onBoardLastItem(Context context, View view, boolean isSound) {
+    public static void onBoardList(Context context, View view) {
         SharedPreferences prefs = getPrefs(context);
-        String key = isSound ? ONBOARD_SOUND_LAST : ONBOARD_SCREEN_LAST;
-        if (prefs.getBoolean(key, false)) {
-            return;
+        int appOpenTimes = prefs.getInt(ONBOARD_SOUND_LIST, 0);
+
+        // Wait for the user to open the app 2 times before exposing this
+        if (appOpenTimes <= RIPPLE_OPEN_APP_WAIT) {
+            prefs.edit().putInt(ONBOARD_SOUND_LIST, appOpenTimes + 1).apply();
         }
 
-        prefs.edit().putBoolean(key, true).apply();
-
-        // Animate using ripple effect
-        for (int i = 1; i <= RIPPLE_REPEAT; i++) {
-            new Handler().postDelayed(pressRipple(view), i * RIPPLE_DELAY);
+        if (appOpenTimes == RIPPLE_OPEN_APP_WAIT) {
+            // Animate using ripple effect
+            for (int i = 1; i <= RIPPLE_REPEAT; i++) {
+                new Handler().postDelayed(pressRipple(view), i * RIPPLE_DELAY);
+            }
         }
     }
 
-    public static void onBoardScreenSettings(Context context, View view) {
+    public static void onBoardSettings(Context context, View view) {
         SharedPreferences prefs = getPrefs(context);
-        int appOpenTimes = prefs.getInt(ONBOARD_SCREEN_SETTINGS, 0);
+        int appOpenTimes = prefs.getInt(ONBOARD_SETTINGS, 0);
 
-        // Wait for the user to open the app 3 times before exposing this
+        // Wait for the user to open the app 4 times before exposing this
         if (appOpenTimes <= ROTATION_OPEN_APP_WAIT) {
-            prefs.edit().putInt(ONBOARD_SCREEN_SETTINGS, appOpenTimes + 1).apply();
+            prefs.edit().putInt(ONBOARD_SETTINGS, appOpenTimes + 1).apply();
         }
 
         if (appOpenTimes == ROTATION_OPEN_APP_WAIT) {

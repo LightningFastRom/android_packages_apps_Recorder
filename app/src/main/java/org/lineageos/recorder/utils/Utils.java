@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 The LineageOS Project
+ * Copyright (C) 2017-2021 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,8 +17,7 @@ package org.lineageos.recorder.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.util.DisplayMetrics;
+import android.view.inputmethod.InputMethodManager;
 
 import java.io.Closeable;
 import java.io.IOException;
@@ -27,9 +26,10 @@ public class Utils {
     public static final String PREFS = "preferences";
     public static final String KEY_RECORDING = "recording";
     public static final String PREF_RECORDING_NOTHING = "nothing";
-    public static final String PREF_RECORDING_SCREEN = "screen";
     private static final String PREF_RECORDING_SOUND = "sound";
-    public static final String PREF_SCREEN_WITH_AUDIO = "screen_with_audio";
+    private static final String PREF_RECORDING_PAUSED = "paused";
+    public static final String PREF_TAG_WITH_LOCATION = "tag_with_location";
+    public static final String PREF_RECORDING_QUALITY = "recording_quality";
 
     private Utils() {
     }
@@ -40,12 +40,16 @@ public class Utils {
     }
 
     public static void setStatus(Context context, UiStatus status) {
-        if (status.equals(UiStatus.SOUND)) {
-            setStatus(context, PREF_RECORDING_SOUND);
-        } else if (status.equals(UiStatus.SCREEN)) {
-            setStatus(context, PREF_RECORDING_SCREEN);
-        } else {
-            setStatus(context, PREF_RECORDING_NOTHING);
+        switch (status) {
+            case SOUND:
+                setStatus(context, PREF_RECORDING_SOUND);
+                break;
+            case PAUSED:
+                setStatus(context, PREF_RECORDING_PAUSED);
+                break;
+            default:
+                setStatus(context, PREF_RECORDING_NOTHING);
+                break;
         }
     }
 
@@ -58,31 +62,8 @@ public class Utils {
         return !PREF_RECORDING_NOTHING.equals(getStatus(context));
     }
 
-    public static boolean isSoundRecording(Context context) {
-        return PREF_RECORDING_SOUND.equals(getStatus(context));
-    }
-
-    public static boolean isScreenRecording(Context context) {
-        return PREF_RECORDING_SCREEN.equals(getStatus(context));
-    }
-
-    @SuppressWarnings("SameParameterValue")
-    public static int convertDp2Px(Context context, int dp) {
-        DisplayMetrics metrics = context.getResources().getDisplayMetrics();
-        return Math.round(dp * metrics.density + 0.5f);
-    }
-
-    public static int darkenedColor(int color) {
-        int alpha = Color.alpha(color);
-        int red = getDarkenedColorValue(Color.red(color));
-        int green = getDarkenedColorValue(Color.green(color));
-        int blue = getDarkenedColorValue(Color.blue(color));
-        return Color.argb(alpha, red, green, blue);
-    }
-
-    private static int getDarkenedColorValue(int value) {
-        float dark = 0.8f; // -20% lightness
-        return Math.min(Math.round(value * dark), 255);
+    public static boolean isPaused(Context context) {
+        return PREF_RECORDING_PAUSED.equals(getStatus(context));
     }
 
     /**
@@ -118,11 +99,29 @@ public class Utils {
         }
     }
 
+    public static void showKeyboard(Context context) {
+        InputMethodManager inputMethodManager = context.getSystemService(InputMethodManager.class);
+        inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+    }
+
+    public static void closeKeyboard(Context context) {
+        InputMethodManager inputMethodManager = context.getSystemService(InputMethodManager.class);
+        inputMethodManager.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
+    }
+
+    public static void setRecordingHighQuality(Context context, boolean highQuality) {
+        SharedPreferences prefs = context.getSharedPreferences(PREFS, 0);
+        prefs.edit().putInt(PREF_RECORDING_QUALITY, highQuality ? 1 : 0).apply();
+    }
+
+    public static boolean getRecordInHighQuality(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences(PREFS, 0);
+        return prefs.getInt(PREF_RECORDING_QUALITY, 0) == 1;
+    }
 
     public enum UiStatus {
         NOTHING,
         SOUND,
-        SCREEN
+        PAUSED,
     }
-
 }
