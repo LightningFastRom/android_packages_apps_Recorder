@@ -23,15 +23,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/sound">
-    
-	<Toolbar
+
+    <Toolbar
         android:id="@+id/recording_toolbar"
         android:layout_width="0dp"
-        android:layout_height="?attr/actionBarSize"
+        android:outlineProvider="none"
+        android:title="@string/app_name"
+        android:titleTextAppearance="@style/AppTheme.RecordToolbarTitleText"
+        android:theme="@style/AppTheme.RecordToolbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" 
-        android:outlineProvider="none" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <FrameLayout
         android:id="@+id/main_bottom_container"

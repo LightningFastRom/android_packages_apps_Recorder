@@ -15,7 +15,7 @@
      limitations under the License.
 -->
 <resources>
-    <string name="app_name">Voice Note</string>
+    <string name="app_name">Recorder</string>
 
     <!-- Common actions -->
     <!-- Share action for notification -->

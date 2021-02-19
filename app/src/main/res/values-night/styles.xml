@@ -23,23 +23,26 @@
         <item name="android:windowLightNavigationBar">false</item>
         <item name="android:windowLightStatusBar">false</item>
         <item name="android:windowContentTransitions">false</item>
-	    <item name="android:windowActionBarOverlay">true</item>
-		<item name="android:actionBarStyle">@style/AppTheme.RecordToolbar</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:actionBarStyle">@style/AppTheme.RecordToolbar</item>
+        <item name="android:toolbarStyle">@style/AppTheme.RecordToolbar</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
     <style name="AppTheme.RecorderActivity">
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@color/sound</item>
         <item name="android:navigationBarColor">@color/sound</item>
-		<item name="android:background">@color/sound</item>
-		<item name="android:textColorPrimary">@color/icon</item>
+        <item name="android:background">@color/sound</item>
+        <item name="android:textColorPrimary">@color/icon</item>
         <item name="android:fitsSystemWindows">true</item>
-		<item name="android:windowContentTransitions">true</item>
-		<item name="android:windowActionBarOverlay">true</item>
-		<item name="android:actionBarStyle">@style/AppTheme.RecordToolbar</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:actionBarStyle">@style/AppTheme.RecordToolbar</item>
     </style>
-	
-	<style name="AppTheme.NoActionBar"  parent="@style/AppTheme.RecorderActivity">
+
+    <style name="AppTheme.NoActionBar"  parent="@style/AppTheme.RecorderActivity">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
@@ -58,21 +61,23 @@
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="android:statusBarColor">?android:attr/colorPrimaryDark</item>
-		<item name="android:background">?android:attr/colorPrimaryDark</item>
+        <item name="android:background">?android:attr/colorPrimaryDark</item>
         <item name="android:windowContentTransitions">true</item>
         <item name="android:windowLightNavigationBar">true</item>
-        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightStatusBar">false</item>
     </style>
-	
-	<style name="AppTheme.RecordToolbar" parent="Theme.AppCompat.DayNight.NoActionBar">
+
+    <style name="AppTheme.RecordToolbar" parent="Theme.AppCompat.DayNight.NoActionBar">
         <item name="android:background">@color/sound</item>
-		<item name="android:displayOptions"></item>
-		<item name="background">@color/sound</item>
-		<item name="android:titleTextStyle">@style/AppTheme.RecordToolbarTitleText</item>
+        <item name="android:displayOptions"></item>
+        <item name="background">@color/sound</item>
+        <item name="android:titleTextColor">@color/white</item>
+        <item name="android:outlineProvider">none</item>
+        <item name="android:titleTextAppearance">@style/AppTheme.RecordToolbarTitleText</item>
     </style>
-	
-	<style name="AppTheme.RecordToolbarTitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
-        <item name="android:textSize">72sp</item>
+
+    <style name="AppTheme.RecordToolbarTitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">36dip</item>
     </style>
 
     <style name="AppTheme.RecordFab">

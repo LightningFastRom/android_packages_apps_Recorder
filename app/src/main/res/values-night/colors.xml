@@ -26,6 +26,6 @@
 
     <color name="screen">#001023</color>
     <color name="sound">#320500</color>
-	<color name="wave">#12ffffff</color>
+	<color name="wave">#25FFFFFF</color>
     <color name="icon">#ffffff</color>
 </resources>

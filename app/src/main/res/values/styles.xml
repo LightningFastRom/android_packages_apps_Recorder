@@ -25,6 +25,9 @@
         <item name="android:windowContentTransitions">false</item>
 	    <item name="android:windowActionBarOverlay">true</item>
 		<item name="android:actionBarStyle">@style/AppTheme.RecordToolbar</item>
+        <item name="android:toolbarStyle">@style/AppTheme.RecordToolbar</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
     <style name="AppTheme.RecorderActivity">
@@ -68,11 +71,13 @@
         <item name="android:background">@color/sound</item>
 		<item name="android:displayOptions"></item>
 		<item name="background">@color/sound</item>
-		<item name="android:titleTextStyle">@style/AppTheme.RecordToolbarTitleText</item>
+        <item name="android:titleTextColor">@color/white</item>
+        <item name="android:outlineProvider">none</item>
+		<item name="android:titleTextAppearance">@style/AppTheme.RecordToolbarTitleText</item>
     </style>
 	
 	<style name="AppTheme.RecordToolbarTitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
-        <item name="android:textSize">72sp</item>
+        <item name="android:textSize">36dip</item>
     </style>
 
     <style name="AppTheme.RecordFab">
