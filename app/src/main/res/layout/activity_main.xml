@@ -59,6 +59,7 @@
         android:id="@+id/main_recording_visualizer"
         android:layout_width="0dp"
         android:layout_height="128dp"
+		android:background="@android:color/transparent"
         android:visibility="invisible"
         app:wavesColor="@color/wave"
         app:maxAudioValue="@integer/max_audio_value"
