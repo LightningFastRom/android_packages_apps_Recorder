@@ -1,5 +1,6 @@
 /*
- * Copyright (C) 2021 The LineageOS Project
+ * Copyright (C) 2020-2021 The LineageOS Project
+ * Copyright (C) 2020-2021 The lightning Projectt
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,8 +14,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.lightning.recorder;
+package org.lightning.recorder.service;
 
-public final class BuildConfig {
-    public static final String APPLICATION_ID = "org.lightning.recorder";
+import android.os.Binder;
+
+import androidx.annotation.NonNull;
+
+public class RecorderBinder extends Binder {
+
+    @NonNull
+    private final SoundRecorderService mService;
+
+    public RecorderBinder(@NonNull SoundRecorderService service) {
+        super();
+        mService = service;
+    }
+
+    @NonNull
+    public SoundRecorderService getService() {
+        return mService;
+    }
 }

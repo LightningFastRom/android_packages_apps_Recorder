@@ -1,5 +1,6 @@
 /*
- * Copyright (C) 2021 The LineageOS Project
+ * Copyright (C) 2020-2021 The LineageOS Project
+ * Copyright (C) 2020-2021 The lightning Projectt
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,8 +14,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.lightning.recorder;
+package org.lightning.recorder.service;
 
-public final class BuildConfig {
-    public static final String APPLICATION_ID = "org.lightning.recorder";
+import java.io.File;
+import java.io.IOException;
+
+public interface SoundRecording {
+
+    void startRecording(File file) throws IOException;
+
+    boolean stopRecording();
+
+    boolean pauseRecording();
+
+    boolean resumeRecording();
+
+    int getCurrentAmplitude();
+
+    String getMimeType();
+
+    String getFileExtension();
 }

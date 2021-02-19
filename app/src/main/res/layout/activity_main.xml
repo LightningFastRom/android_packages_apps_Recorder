@@ -54,7 +54,7 @@
             android:src="@drawable/ic_action_sound_record" />
     </FrameLayout>
 
-    <org.lineageos.recorder.ui.WaveFormView
+    <org.lightning.recorder.ui.WaveFormView
         android:id="@+id/main_recording_visualizer"
         android:layout_width="0dp"
         android:layout_height="128dp"
