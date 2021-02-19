@@ -141,8 +141,7 @@ public class SoundRecorderService extends Service {
     }
 
     private int startRecording(@Nullable String locationName) {
-        boolean highQuality = Utils.getRecordInHighQuality(this);
-        mRecorder = highQuality ? new HighQualityRecorder() : new GoodQualityRecorder();
+        mRecorder =  new HighQualityRecorder();
 
         mRecordFile = createNewAudioFile(locationName, mRecorder.getFileExtension());
         mIsPaused = false;

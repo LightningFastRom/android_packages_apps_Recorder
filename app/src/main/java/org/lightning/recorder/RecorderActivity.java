@@ -44,7 +44,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import org.lightning.recorder.service.RecorderBinder;
 import org.lightning.recorder.service.SoundRecorderService;
 import org.lightning.recorder.ui.WaveFormView;
-import org.lightning.recorder.utils.LocationHelper;
 import org.lightning.recorder.utils.OnBoardingHelper;
 import org.lightning.recorder.utils.Utils;
 
@@ -74,7 +73,6 @@ public class RecorderActivity extends AppCompatActivity implements
     private TextView mRecordingText;
     private WaveFormView mRecordingVisualizer;
 
-    private LocationHelper mLocationHelper;
 
     private final BroadcastReceiver mTelephonyReceiver = new BroadcastReceiver() {
         @Override
@@ -109,8 +107,6 @@ public class RecorderActivity extends AppCompatActivity implements
 
         mPrefs = getSharedPreferences(Utils.PREFS, 0);
         mPrefs.registerOnSharedPreferenceChangeListener(this);
-
-        mLocationHelper = new LocationHelper(this);
 
         bindSoundRecService();
 
@@ -228,9 +224,7 @@ public class RecorderActivity extends AppCompatActivity implements
         } else {
             // Start
             Intent startIntent = new Intent(this, SoundRecorderService.class)
-                    .setAction(SoundRecorderService.ACTION_START)
-                    .putExtra(SoundRecorderService.EXTRA_LOCATION,
-                            mLocationHelper.getCurrentLocationName());
+                    .setAction(SoundRecorderService.ACTION_START);
             startService(startIntent);
         }
     }
