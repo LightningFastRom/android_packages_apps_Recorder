@@ -14,9 +14,9 @@
      limitations under the License.
 -->
 <resources>
-    <color name="colorPrimary">#f8f8f8</color>
-    <color name="colorPrimaryDark">#dfdfdf</color>
-    <color name="colorAccent">#dfdfdf</color>
+    <color name="colorPrimary">#000000</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#4f2f54</color>
     <color name="colorOverlay">#212121</color>
     <color name="colorOverlayMain">#000000</color>
     <color name="colorDragLayer">#ffffff</color>
@@ -24,7 +24,8 @@
     <color name="white">#fafafa</color>
     <color name="black">#333333</color>
 
-    <color name="screen">#00418C</color>
-    <color name="sound">#C81400</color>
-    <color name="icon">#dfdfdf</color>
+    <color name="screen">#001023</color>
+    <color name="sound">#320500</color>
+	<color name="wave">#12ffffff</color>
+    <color name="icon">#ffffff</color>
 </resources>

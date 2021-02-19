@@ -42,6 +42,7 @@
         android:layout_height="wrap_content"
         android:paddingBottom="16dp"
         android:paddingTop="16dp"
+		android:background="@android:color/transparent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -98,4 +99,5 @@
         app:layout_constraintBottom_toBottomOf="@id/main_bottom_container"
         app:layout_constraintEnd_toStartOf="@id/sound_list_icon"
         app:layout_constraintTop_toTopOf="@id/main_bottom_container" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

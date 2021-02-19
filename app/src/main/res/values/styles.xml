@@ -20,14 +20,16 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowLightNavigationBar">true</item>
-        <item name="android:windowLightStatusBar">true</item>
-        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowContentTransitions">false</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@color/sound</item>
         <item name="android:navigationBarColor">@color/sound</item>
+		<item name="android:background">?android:attr/colorPrimary</item>
+		<item name="android:textColor">@color/icon</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:fitsSystemWindows">true</item>
@@ -47,12 +49,14 @@
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="android:statusBarColor">?android:attr/colorPrimary</item>
+		<item name="android:background">?android:attr/colorPrimary</item>
         <item name="android:windowContentTransitions">true</item>
-        <item name="android:windowLightNavigationBar">@bool/is_day</item>
-        <item name="android:windowLightStatusBar">@bool/is_day</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 
     <style name="AppTheme.RecordTitle">
+        <item name="android:background">@android:color/transparent</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:paddingTop">24dp</item>
@@ -74,6 +78,7 @@
     </style>
 
     <style name="AppTheme.ActionsLayout">
+        <item name="android:background">@android:color/transparent</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">52dp</item>
         <item name="android:paddingTop">8dp</item>
