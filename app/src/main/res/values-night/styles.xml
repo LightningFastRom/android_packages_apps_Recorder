@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Copyright (c) 2017 The LineageOS Project
+     Copyright (c) 2017-2021 The lightning Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -16,23 +17,31 @@
 <resources>
 
     <style name="AppTheme" parent="Theme.AppCompat.Light">
-        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimary">@color/colorPrimaryDark</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:windowLightNavigationBar">false</item>
         <item name="android:windowLightStatusBar">false</item>
         <item name="android:windowContentTransitions">false</item>
+	    <item name="android:windowActionBarOverlay">true</item>
+		<item name="android:actionBarStyle">@style/AppTheme.RecordToolbar</item>
     </style>
 
-    <style name="AppTheme.NoActionBar">
+    <style name="AppTheme.RecorderActivity">
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@color/sound</item>
         <item name="android:navigationBarColor">@color/sound</item>
-		<item name="android:background">?android:attr/colorPrimaryDark</item>
-		<item name="android:textColor">@color/icon</item>
+		<item name="android:background">@color/sound</item>
+		<item name="android:textColorPrimary">@color/icon</item>
+        <item name="android:fitsSystemWindows">true</item>
+		<item name="android:windowContentTransitions">true</item>
+		<item name="android:windowActionBarOverlay">true</item>
+		<item name="android:actionBarStyle">@style/AppTheme.RecordToolbar</item>
+    </style>
+	
+	<style name="AppTheme.NoActionBar"  parent="@style/AppTheme.RecorderActivity">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:fitsSystemWindows">true</item>
     </style>
 
     <style name="AppTheme.DialogActivity">
@@ -51,21 +60,19 @@
         <item name="android:statusBarColor">?android:attr/colorPrimaryDark</item>
 		<item name="android:background">?android:attr/colorPrimaryDark</item>
         <item name="android:windowContentTransitions">true</item>
-        <item name="android:windowLightNavigationBar">false</item>
-        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
-
-    <style name="AppTheme.RecordTitle">
-        <item name="android:background">@android:color/transparent</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:paddingTop">24dp</item>
-        <item name="android:paddingBottom">24dp</item>
-        <item name="android:paddingStart">16dp</item>
-        <item name="android:paddingEnd">16dp</item>
-        <item name="android:textColor">@color/icon</item>
-        <item name="android:textSize">36sp</item>
-        <item name="android:maxLines">1</item>
+	
+	<style name="AppTheme.RecordToolbar" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:background">@color/sound</item>
+		<item name="android:displayOptions"></item>
+		<item name="background">@color/sound</item>
+		<item name="android:titleTextStyle">@style/AppTheme.RecordToolbarTitleText</item>
+    </style>
+	
+	<style name="AppTheme.RecordToolbarTitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">72sp</item>
     </style>
 
     <style name="AppTheme.RecordFab">

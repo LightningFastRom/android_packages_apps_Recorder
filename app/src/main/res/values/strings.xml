@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Copyright (c) 2017-2021 The LineageOS Project
+     Copyright (c) 2017-2021 The lightning Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -14,7 +15,7 @@
      limitations under the License.
 -->
 <resources>
-    <string name="app_name">Recorder</string>
+    <string name="app_name">Voice Note</string>
 
     <!-- Common actions -->
     <!-- Share action for notification -->
@@ -46,8 +47,6 @@
     <string name="sound_notification_title">Sound Recorder</string>
     <!-- Sound recorder notification message -->
     <string name="sound_notification_message">Audio length: %1$s</string>
-    <!-- Sound recorder status card title recording -->
-    <string name="sound_recording_title_working">Recording</string>
     <!-- Sound recorder last item title -->
     <string name="sound_last_title">Last record</string>
     <!-- Sound recorder notification channel title -->
@@ -87,10 +86,6 @@
     <string name="snack_permissions_no_permission">Required permissions were denied, enable them from Settings app to start recording</string>
     <!-- User denied location access -->
     <string name="snack_permissions_no_permission_location">Location permission was denied, enable it from Settings app to tag your recordings</string>
-
-    <!-- Main activity -->
-    <!-- Sound record title -->
-    <string name="main_sound_action">Record sound</string>
 
     <!-- List activity -->
     <!-- List activity title -->

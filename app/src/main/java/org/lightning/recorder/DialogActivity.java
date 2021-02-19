@@ -40,7 +40,6 @@ import org.lightning.recorder.utils.Utils;
 
 public class DialogActivity extends AppCompatActivity {
     public static final String EXTRA_TITLE = "dialogTitle";
-    public static final String EXTRA_SETTINGS_SCREEN = "settingsScreen";
     public static final String EXTRA_DELETE_LAST_RECORDING = "deleteLastItem";
     private static final int REQUEST_LOCATION_PERMS = 214;
 
@@ -74,7 +73,6 @@ public class DialogActivity extends AppCompatActivity {
                 ViewGroup.LayoutParams.WRAP_CONTENT);
 
         int dialogTitle = intent.getIntExtra(EXTRA_TITLE, 0);
-        boolean isSettingsScreen = intent.getBooleanExtra(EXTRA_SETTINGS_SCREEN, false);
 
         if (dialogTitle != 0) {
             title.setText(dialogTitle);

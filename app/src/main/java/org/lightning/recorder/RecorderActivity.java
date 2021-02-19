@@ -31,11 +31,12 @@ import android.os.IBinder;
 import android.telephony.TelephonyManager;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.ActivityOptionsCompat;
 
@@ -68,9 +69,7 @@ public class RecorderActivity extends AppCompatActivity implements
     private FloatingActionButton mSoundFab;
     private ImageView mPauseResume;
     private ImageView mSoundList;
-    private ImageView mSettings;
 
-    private TextView mRecordingText;
     private WaveFormView mRecordingVisualizer;
 
 
@@ -95,15 +94,12 @@ public class RecorderActivity extends AppCompatActivity implements
         mSoundFab = findViewById(R.id.sound_fab);
         mPauseResume = findViewById(R.id.sound_pause_resume);
         mSoundList = findViewById(R.id.sound_list_icon);
-        mSettings = findViewById(R.id.sound_settings);
-
-        mRecordingText = findViewById(R.id.main_title);
+	
         mRecordingVisualizer = findViewById(R.id.main_recording_visualizer);
 
         mSoundFab.setOnClickListener(v -> toggleSoundRecorder());
         mPauseResume.setOnClickListener(v -> togglePause());
         mSoundList.setOnClickListener(v -> openList());
-        mSettings.setOnClickListener(v -> openSettings());
 
         mPrefs = getSharedPreferences(Utils.PREFS, 0);
         mPrefs.registerOnSharedPreferenceChangeListener(this);
@@ -111,7 +107,6 @@ public class RecorderActivity extends AppCompatActivity implements
         bindSoundRecService();
 
         OnBoardingHelper.onBoardList(this, mSoundList);
-        OnBoardingHelper.onBoardSettings(this, mSettings);
     }
 
     @Override
@@ -247,7 +242,6 @@ public class RecorderActivity extends AppCompatActivity implements
 
     private void refresh() {
         if (Utils.isRecording(this)) {
-            mRecordingText.setText(getString(R.string.sound_recording_title_working));
             mSoundFab.setImageResource(R.drawable.ic_stop_sound);
             mSoundFab.setSelected(true);
             mRecordingVisualizer.setVisibility(View.VISIBLE);
@@ -264,7 +258,6 @@ public class RecorderActivity extends AppCompatActivity implements
                 mSoundService.setAudioListener(mRecordingVisualizer);
             }
         } else {
-            mRecordingText.setText(getString(R.string.main_sound_action));
             mSoundFab.setImageResource(R.drawable.ic_action_sound_record);
             mSoundFab.setSelected(false);
             mRecordingVisualizer.setVisibility(View.INVISIBLE);
@@ -340,13 +333,6 @@ public class RecorderActivity extends AppCompatActivity implements
                 view, transitionName);
         ActivityCompat.startActivityForResult(this, intent,
                 REQUEST_DIALOG_ACTIVITY, options.toBundle());
-    }
-
-    private void openSettings() {
-        Intent intent = new Intent(this, DialogActivity.class);
-        intent.putExtra(DialogActivity.EXTRA_TITLE, R.string.settings_title);
-        intent.putExtra(DialogActivity.EXTRA_SETTINGS_SCREEN, true);
-        showDialog(intent, mSettings);
     }
 
     private void openList() {
