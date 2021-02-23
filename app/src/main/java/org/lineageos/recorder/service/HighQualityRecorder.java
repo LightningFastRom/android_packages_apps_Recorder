@@ -14,15 +14,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.lightning.recorder.service;
+package org.lineageos.recorder.service;
 
 import android.media.AudioFormat;
 import android.media.AudioRecord;
 import android.media.MediaRecorder;
 import android.util.Log;
 
-import org.lightning.recorder.utils.PcmConverter;
-import org.lightning.recorder.utils.Utils;
+import org.lineageos.recorder.utils.PcmConverter;
+import org.lineageos.recorder.utils.Utils;
 
 import java.io.BufferedOutputStream;
 import java.io.File;

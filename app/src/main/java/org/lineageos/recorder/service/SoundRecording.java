@@ -14,24 +14,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.lightning.recorder.service;
+package org.lineageos.recorder.service;
 
-import android.os.Binder;
+import java.io.File;
+import java.io.IOException;
 
-import androidx.annotation.NonNull;
+public interface SoundRecording {
 
-public class RecorderBinder extends Binder {
+    void startRecording(File file) throws IOException;
 
-    @NonNull
-    private final SoundRecorderService mService;
+    boolean stopRecording();
 
-    public RecorderBinder(@NonNull SoundRecorderService service) {
-        super();
-        mService = service;
-    }
+    boolean pauseRecording();
 
-    @NonNull
-    public SoundRecorderService getService() {
-        return mService;
-    }
+    boolean resumeRecording();
+
+    int getCurrentAmplitude();
+
+    String getMimeType();
+
+    String getFileExtension();
 }

@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.lightning.recorder.utils;
+package org.lineageos.recorder.utils;
 
 import android.content.ContentResolver;
 import android.content.ContentUris;
@@ -30,8 +30,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
-import org.lightning.recorder.BuildConfig;
-import org.lightning.recorder.list.RecordingData;
+import org.lineageos.recorder.BuildConfig;
+import org.lineageos.recorder.list.RecordingData;
 
 import java.io.File;
 import java.io.FileOutputStream;

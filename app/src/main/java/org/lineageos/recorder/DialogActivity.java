@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.lightning.recorder;
+package org.lineageos.recorder;
 
 import android.Manifest;
 import android.content.Intent;
@@ -35,8 +35,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.lightning.recorder.utils.LastRecordHelper;
-import org.lightning.recorder.utils.Utils;
+import org.lineageos.recorder.utils.LastRecordHelper;
+import org.lineageos.recorder.utils.Utils;
 
 public class DialogActivity extends AppCompatActivity {
     public static final String EXTRA_TITLE = "dialogTitle";

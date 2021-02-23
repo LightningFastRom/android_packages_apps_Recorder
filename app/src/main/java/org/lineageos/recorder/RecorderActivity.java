@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.lightning.recorder;
+package org.lineageos.recorder;
 
 import android.Manifest;
 import android.content.BroadcastReceiver;
@@ -42,11 +42,11 @@ import androidx.core.app.ActivityOptionsCompat;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import org.lightning.recorder.service.RecorderBinder;
-import org.lightning.recorder.service.SoundRecorderService;
-import org.lightning.recorder.ui.WaveFormView;
-import org.lightning.recorder.utils.OnBoardingHelper;
-import org.lightning.recorder.utils.Utils;
+import org.lineageos.recorder.service.RecorderBinder;
+import org.lineageos.recorder.service.SoundRecorderService;
+import org.lineageos.recorder.ui.WaveFormView;
+import org.lineageos.recorder.utils.OnBoardingHelper;
+import org.lineageos.recorder.utils.Utils;
 
 import java.util.ArrayList;
 

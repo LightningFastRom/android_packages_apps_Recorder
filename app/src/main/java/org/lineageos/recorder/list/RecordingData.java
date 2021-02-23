@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.lightning.recorder.list;
+package org.lineageos.recorder.list;
 
 import android.net.Uri;
 

@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.lightning.recorder;
+package org.lineageos.recorder;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -32,10 +32,10 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.lightning.recorder.list.RecordingItemCallbacks;
-import org.lightning.recorder.list.RecordingsAdapter;
-import org.lightning.recorder.utils.LastRecordHelper;
-import org.lightning.recorder.utils.MediaProviderHelper;
+import org.lineageos.recorder.list.RecordingItemCallbacks;
+import org.lineageos.recorder.list.RecordingsAdapter;
+import org.lineageos.recorder.utils.LastRecordHelper;
+import org.lineageos.recorder.utils.MediaProviderHelper;
 
 public class ListActivity extends AppCompatActivity implements RecordingItemCallbacks {
     private static final String TYPE_AUDIO = "audio/*";

@@ -16,7 +16,7 @@
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="org.lightning.recorder">
+    package="org.lineageos.recorder">
 
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -42,7 +42,7 @@
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.PHONE_STATE" />
                 <action android:name="android.provider.MediaStore.RECORD_SOUND" />
-                <action android:name="org.lightning.recorder.server.display.SCAN" />
+                <action android:name="org.lineageos.recorder.server.display.SCAN" />
 
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -69,10 +69,10 @@
             android:name=".service.SoundRecorderService"
             android:exported="false">
             <intent-filter>
-                <action android:name="org.lightning.recorder.service.START" />
-                <action android:name="org.lightning.recorder.service.STOP" />
-                <action android:name="org.lightning.recorder.service.PAUSE" />
-                <action android:name="org.lightning.recorder.service.RESUME" />
+                <action android:name="org.lineageos.recorder.service.START" />
+                <action android:name="org.lineageos.recorder.service.STOP" />
+                <action android:name="org.lineageos.recorder.service.PAUSE" />
+                <action android:name="org.lineageos.recorder.service.RESUME" />
             </intent-filter>
         </service>
     </application>

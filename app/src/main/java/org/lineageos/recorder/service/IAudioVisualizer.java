@@ -14,15 +14,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.lightning.recorder.list;
+package org.lineageos.recorder.service;
 
-import android.net.Uri;
+public interface IAudioVisualizer {
 
-import androidx.annotation.NonNull;
-
-public interface RecordingItemCallbacks {
-    void onPlay(@NonNull Uri uri);
-    void onShare(@NonNull Uri uri);
-    void onDelete(int index, @NonNull Uri uri);
-    void onRename(int index, @NonNull Uri uri, @NonNull String currentName);
+    void setAmplitude(int amplitude);
 }

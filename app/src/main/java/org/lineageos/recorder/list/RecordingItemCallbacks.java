@@ -14,24 +14,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.lightning.recorder.service;
+package org.lineageos.recorder.list;
 
-import java.io.File;
-import java.io.IOException;
+import android.net.Uri;
 
-public interface SoundRecording {
+import androidx.annotation.NonNull;
 
-    void startRecording(File file) throws IOException;
-
-    boolean stopRecording();
-
-    boolean pauseRecording();
-
-    boolean resumeRecording();
-
-    int getCurrentAmplitude();
-
-    String getMimeType();
-
-    String getFileExtension();
+public interface RecordingItemCallbacks {
+    void onPlay(@NonNull Uri uri);
+    void onShare(@NonNull Uri uri);
+    void onDelete(int index, @NonNull Uri uri);
+    void onRename(int index, @NonNull Uri uri, @NonNull String currentName);
 }

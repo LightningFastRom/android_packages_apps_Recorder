@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.lightning.recorder.service;
+package org.lineageos.recorder.service;
 
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -36,12 +36,12 @@ import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
 
-import org.lightning.recorder.ListActivity;
-import org.lightning.recorder.R;
-import org.lightning.recorder.RecorderActivity;
-import org.lightning.recorder.utils.LastRecordHelper;
-import org.lightning.recorder.utils.MediaProviderHelper;
-import org.lightning.recorder.utils.Utils;
+import org.lineageos.recorder.ListActivity;
+import org.lineageos.recorder.R;
+import org.lineageos.recorder.RecorderActivity;
+import org.lineageos.recorder.utils.LastRecordHelper;
+import org.lineageos.recorder.utils.MediaProviderHelper;
+import org.lineageos.recorder.utils.Utils;
 
 import java.io.File;
 import java.io.IOException;
@@ -55,10 +55,10 @@ import java.util.concurrent.atomic.AtomicLong;
 public class SoundRecorderService extends Service {
     private static final String TAG = "SoundRecorderService";
 
-    public static final String ACTION_START = "org.lightning.recorder.service.START";
-    public static final String ACTION_STOP = "org.lightning.recorder.service.STOP";
-    public static final String ACTION_PAUSE = "org.lightning.recorder.service.PAUSE";
-    public static final String ACTION_RESUME = "org.lightning.recorder.service.RESUME";
+    public static final String ACTION_START = "org.lineageos.recorder.service.START";
+    public static final String ACTION_STOP = "org.lineageos.recorder.service.STOP";
+    public static final String ACTION_PAUSE = "org.lineageos.recorder.service.PAUSE";
+    public static final String ACTION_RESUME = "org.lineageos.recorder.service.RESUME";
 
     public static final String EXTRA_LOCATION = "extra_filename";
     private static final String FILE_NAME_BASE = "SoundRecords/%1$s (%2$s).%3$s";
