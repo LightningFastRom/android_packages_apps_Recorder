@@ -27,6 +27,7 @@
     <Toolbar
         android:id="@+id/recording_toolbar"
         android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
         android:outlineProvider="none"
         android:title="@string/app_name"
         android:titleTextAppearance="@style/AppTheme.RecordToolbarTitleText"
