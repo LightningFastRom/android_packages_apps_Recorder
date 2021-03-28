@@ -42,7 +42,7 @@ public class LastRecordHelper {
     }
 
     public static AlertDialog deleteFile(Context context, final Uri uri) {
-        return new AlertDialog.Builder(context)
+        return new AlertDialog.Builder(context, R.style.DialogActivity)
                 .setTitle(R.string.delete_title)
                 .setMessage(context.getString(R.string.delete_recording_message))
                 .setPositiveButton(R.string.delete, (dialog, which) -> {
@@ -61,7 +61,7 @@ public class LastRecordHelper {
     public static AlertDialog promptFileDeletion(Context context,
                                                  final Uri uri,
                                                  Runnable onDelete) {
-        return new AlertDialog.Builder(context)
+        return new AlertDialog.Builder(context, R.style.DialogActivity)
                 .setTitle(R.string.delete_title)
                 .setMessage(context.getString(R.string.delete_recording_message))
                 .setPositiveButton(R.string.delete, (dialog, which) -> {
@@ -88,7 +88,7 @@ public class LastRecordHelper {
         editText.requestFocus();
         Utils.showKeyboard(context);
 
-        return new AlertDialog.Builder(context)
+        return new AlertDialog.Builder(context, R.style.DialogActivity)
                 .setTitle(R.string.list_edit_title)
                 .setView(view)
                 .setPositiveButton(R.string.list_edit_confirm, (dialog, which) -> {

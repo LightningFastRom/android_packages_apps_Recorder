@@ -16,16 +16,10 @@
 <resources>
     <color name="colorPrimary">#f8f8f8</color>
     <color name="colorPrimaryDark">#dfdfdf</color>
-    <color name="colorAccent">#dfdfdf</color>
-    <color name="colorOverlay">#f8f8f8</color>
-    <color name="colorOverlayMain">#dfdfdf</color>
-    <color name="colorDragLayer">#000000</color>
+    <color name="colorAccent">#C81400</color>
+	<color name="systemColorAccent">@*android:color/accent_device_default_dark</color>
 
-    <color name="white">#fafafa</color>
-    <color name="black">#333333</color>
+    <color name="white">#FFFFFF</color>
 
-    <color name="screen">#00418C</color>
-    <color name="sound">#C81400</color>
     <color name="wave">#25FFFFFF</color>
-    <color name="icon">#dfdfdf</color>
 </resources>

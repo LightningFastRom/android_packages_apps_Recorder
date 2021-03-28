@@ -62,7 +62,7 @@
         <activity
             android:name=".DialogActivity"
             android:excludeFromRecents="true"
-            android:theme="@style/AppTheme.DialogActivity" />
+            android:theme="@style/DialogActivity" />
 
         <!-- Sound recorder -->
         <service

@@ -22,7 +22,7 @@
     android:id="@+id/main_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/sound">
+    android:background="@color/colorAccent">
 
     <Toolbar
         android:id="@+id/recording_toolbar"
@@ -52,7 +52,7 @@
             style="@style/AppTheme.RecordFab"
             android:layout_gravity="center"
             android:contentDescription="@null"
-            android:src="@drawable/ic_action_sound_record" />
+            android:src="@drawable/ic_action_record" />
     </FrameLayout>
 
     <org.lineageos.recorder.ui.WaveFormView
